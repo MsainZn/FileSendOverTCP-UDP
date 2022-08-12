@@ -1,6 +1,7 @@
 {
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
-        "in.h": "c"
+        "in.h": "c",
+        "utilityfunctionsmhz.h": "c"
     }
 }

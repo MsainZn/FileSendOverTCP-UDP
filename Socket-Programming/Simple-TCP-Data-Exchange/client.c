@@ -41,8 +41,8 @@ int main (int argc, char* argv[])
 	struct sockaddr_in* serverAddr = 
 						(struct sockaddr_in*) malloc(sizeof(struct sockaddr_in));
 	// client buffer
-	char* bufferPtr = (char*) calloc (BUFFER_MAX, sizeof(char));
-	
+	char* bufferPtr   = (char*) calloc (BUFFER_MAX, sizeof(char));
+
 	if (serverAddr == NULL || bufferPtr == NULL)
 		CheckError("[-client] Memory Allocation for sockadd_in strctures!\n");
 	else
@@ -58,167 +58,88 @@ int main (int argc, char* argv[])
 	// Fill address with zero
 	bzero(serverAddr, sizeof(struct sockaddr_in));   //memset(serverAddr, 0x00, sizeof(struct sockaddr_in));
 	bzero(bufferPtr, BUFFER_MAX);  			         //memset(clientAddr, 0x00, BUFFER_MAX);
-	
+
 	// Set-up server parameters
 	serverAddr->sin_family      = AF_INET;
     //bcopy((char*) serverIP->h_addr, serverAddr->sin_addr.s_addr, serverIP->h_length);
 	serverAddr->sin_addr.s_addr = inet_addr(serverIP);
 	serverAddr->sin_port        = htons(portNumber);
-
+	
 	// Connection Request to Server
 	if (connect(sockfd, (struct sockaddr*) serverAddr, sizeof(struct sockaddr_in)) == -1)
 		CheckError("[-client] Error in Connecting to Server!\n");
 	else
 		printf("[+client] Connection Successfully Accepted.\n");
+
 	////////////////////////////////////////////////////////////////////////////////////
 	int n1, n2, answ;
-	char optyp;
 	///////////////////////////////////////////////////////////////////////////////////
 	printf("\n---------------------Client-Side::Connection Established Per Request----------------------.\n\n");
 	while (1)
 	{
 		if (read(sockfd, bufferPtr, BUFFER_MAX) == -1)
 			printf("[-client] Error While Read from buffer!\n");
-		printf("%s: \n", bufferPtr);
+		printf("%s", bufferPtr);
 		scanf("%d",&n1);
+		bzero(bufferPtr, BUFFER_MAX);
 		if (write(sockfd, &n1, sizeof(int)) == -1)
 			printf("[-client] Error While Writing from buffer!\n");
 	
 		if (read(sockfd, bufferPtr, BUFFER_MAX) == -1)
 			printf("[-client] Error While Read from buffer!\n");
-		printf("%s: \n", bufferPtr);
+		printf("%s", bufferPtr);
 		scanf("%d",&n2);
-		if (write(sockfd, &n1, sizeof(int)) == -1)
-			printf("[-client] Error While Writing from buffer!\n");
 		bzero(bufferPtr, BUFFER_MAX);
-
-		do {
+		if (write(sockfd, &n2, sizeof(int)) == -1)
+			printf("[-client] Error While Writing from buffer!\n");
+/*
+		while (1)
+		{
+			bzero(bufferPtr, BUFFER_MAX);
 			if (read(sockfd, bufferPtr, BUFFER_MAX) == -1)
 				printf("[-client] Error While Read from buffer!\n");
-			printf("%s: \n", bufferPtr);
+			printf("%s ", bufferPtr);
+			bzero(bufferPtr, BUFFER_MAX);
 
-			if (read(sockfd, bufferPtr, sizeof(char)) == -1)
-				printf("[-client] Error While Read from buffer!\n");
-			printf("%s: \n", bufferPtr);
-
-			scanf("%c",&optyp);
-			if (write(sockfd, &optyp, sizeof(int)) == -1)
+			scanf("%s", bufferPtr);
+			if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
 				printf("[-client] Error While Writing from buffer!\n");
-		} while (optyp);
+			
+			bzero(bufferPtr, BUFFER_MAX);
+			if (read(sockfd, bufferPtr, BUFFER_MAX) == -1)
+				printf("[-client] Error While Read from buffer!\n");
+			
+			if (memcmp(bufferPtr, "ok", 2) == 0) break;			
+		}
+		if (read(sockfd, &answ, sizeof(int)) == -1)
+				printf("[-client] Error While Read from buffer!\n");
 		
-
-
-		// Server recieve message from client
+		printf("The Result is: %d\n", answ);
+*/
+		// Client Exit
 		bzero(bufferPtr, BUFFER_MAX);
-		printf("~Me    >> ");
+		if ( read(sockfd, bufferPtr, BUFFER_MAX) == -1 )
+			printf("[-client] Error While Read from buffer!\n");
+		printf("%s", bufferPtr);
+
+		bzero(bufferPtr, BUFFER_MAX);
 		fgets(bufferPtr, BUFFER_MAX, stdin);
-	
 		if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
 			printf("[-client] Error While Writing from buffer!\n");
+	
+		if ( memcmp(bufferPtr,"N",  1) == 0 || memcmp(bufferPtr,"n",  1) == 0 ||
+			 memcmp(bufferPtr,"NO", 2) == 0 || memcmp(bufferPtr,"no", 2) == 0 || 
+			 memcmp(bufferPtr,"No", 2) == 0 ) 
+			 break;
+			  
+		bzero(bufferPtr, BUFFER_MAX); 
 
-		// Client Exit
-		if (strncmp("EOF", bufferPtr, 3) == 0) break;
-
-		
 	}
 	printf("\n---------------------Client-Side::Connection Terminated Per Request----------------------.\n");
 
     close(sockfd);
 
+	free(bufferPtr);
+
 	return 0;
 }
-
-
-/*
-
-char* logFileRecievedName = argv[1]; //"mainFile.log";
-	char* serverIP = argv[2];			 //"192.168.1.1";
-	int portNumber = atoi(argv[3]);	     // 5500
-	// client side buffer size
-	size_t BUFFER_MAX = atoi(argv[4]);	 // 1024
-
-	// client buffer
-    char* recvBuffer = (char*) calloc (BUFFER_MAX, sizeof(char));
-	// Error Flags
-	int connectFlag, openFileFlag, recvBufferFlag;
-	// Socket End-Point
-	int sockfd_client;
-
-    // client :: Socket Initiation Via TCP Protocol
-	sockfd_client = socket(AF_INET, SOCK_STREAM, 0);
-	if (sockfd_client == -1)
-	{
-		perror("[-client] Error in Socket Initiation!\n");
-		exit(-1);
-	}
-	else
-	{
-		printf("[+client] Socket Successfully Initiated via Socket Number: %d.\n", sockfd_client);
-	}
-
-    // server info for connect
-	struct sockaddr_in* serverAddr = 
-						(struct sockaddr_in*) malloc(sizeof(struct sockaddr_in));
-	
-	// Fill address with zero
-	memset(serverAddr, 0x00, sizeof(struct sockaddr_in));
-	serverAddr->sin_family      = AF_INET;
-    serverAddr->sin_addr.s_addr = inet_addr(serverIP);
-	serverAddr->sin_port        = htons(portNumber);
-	
-
-    // client :: Socket Initiation Via TCP Protocol
-	connectFlag = connect(sockfd_client, (struct sockaddr*) serverAddr, sizeof(struct sockaddr_in));
-    if (connectFlag == -1)
-	{
-		perror("[-client] Error in Socket connection!\n");
-		exit(-1);
-	}
-
-	// FILE Handeling
-	FILE *logFileRecieved = NULL;
-	// Nedd change for later
-	logFileRecieved = fopen(logFileRecievedName, "w");
-
-	if (logFileRecieved == NULL)
-	{
-		perror("[-client] File Open Encountered Error!\n");
-		exit(-1);
-	}
-	else
-	{
-		printf("[+client] File Successfully Created.\n");
-	}
-
-	do
-	{
-		memset(recvBuffer, 0x00, BUFFER_MAX);
-		recvBufferFlag = recv(sockfd_client, recvBuffer, BUFFER_MAX, 0);		
-		fwrite(recvBuffer, sizeof(char), recvBufferFlag, logFileRecieved);
-	} while (recvBufferFlag>0);
-	
-    
-	fclose(logFileRecieved);
-    close(sockfd_client);
-
-
-
-// Standard C functions 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-// Standard socket functions & data structures (sockaddr & sockaddr_in)
-#include <arpa/inet.h>
-// A header file that provides access to the POSIX operating system API (READ, WRITE, LINK, SYNC, ...).
-#include <unistd.h>
-
-#include <fcntl.h>
-#include <netdb.h> 
-#include <netinet/in.h>
-#include <sys/stat.h>
-#include <sys/socket.h>
-
-
-
-
-*/

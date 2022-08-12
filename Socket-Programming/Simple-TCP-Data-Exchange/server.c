@@ -19,7 +19,7 @@ int main (int argc, char* argv[])
 		exit(0);
 	}
 	// Input Parameters  
-	int portNumber   		 	 = atoi(argv[1]); // 5500;
+	int portNumber   		 	 = atoi(argv[1]); 			  // 5500;
 	size_t BUFFER_MAX 	   	 	 = 1024; // atoi(argv[4]);    // 1024;
 	size_t maxClientWaitingQueue = 5;	 // atoi(argv[5]);    // 5;
 
@@ -35,8 +35,8 @@ int main (int argc, char* argv[])
 	struct sockaddr_in* clientAddr = 
 						(struct sockaddr_in*) malloc(sizeof(struct sockaddr_in));
 	// client buffer
-	char* bufferPtr = (char*) calloc (BUFFER_MAX, sizeof(char));
-	
+	char* bufferPtr   = (char*) calloc (BUFFER_MAX, sizeof(char));
+	char* bufferPtrOp = (char*) calloc (BUFFER_MAX, sizeof(char));
 	if (clientAddr == NULL || serverAddr == NULL || bufferPtr == NULL)
 		CheckError("[-server] Memory Allocation for sockadd_in strctures!\n");
 	else
@@ -65,6 +65,9 @@ int main (int argc, char* argv[])
 		CheckError("[-server] Error in Socket Binding!\n");
 	else
 		printf("[+server] Socket Successfully Binded.\n");
+	
+	int num1, num2, answer;
+
 	while (1)
 	{
 		// server :: Socket Listening
@@ -74,61 +77,82 @@ int main (int argc, char* argv[])
 			printf("[+server] Listening...\n");
 		
 		sockfd_new = accept(sockfd, (struct sockaddr*) clientAddr, &socklen);
-		if (sockfd == -1)
+		if (sockfd_new == -1)
 			CheckError("[-server] Error in Accepting Client Connection!\n");
 		else
 			printf("[+server] Connection Successfully Accepted.\n");
 
-		int num1, num2, answer;
-		char operationChoice;
-
 		printf("\n---------------------Server-Side::Connection Established Per Request----------------------.\n\n");	
 		while (1)
 		{
-			if (write(sockfd_new, "Enter Number (1): ", strlen("Enter Number (1): ") == -1))
-				CheckError("Error While Writting (Sending)!\n");
+			if ( write(sockfd_new, "Enter Number (1): ", strlen("Enter Number (1): ")) == -1 )
+				printf("Error While Writting (Sending)!\n");
 			if (read(sockfd_new, &num1, sizeof(int)) == -1)
-					printf("Error While Getting info from client (Recieving)!\n");
+				printf("Error While Getting info from client (Recieving)!\n");
+			printf("num 1: %d\n", num1);
 
-			if (write(sockfd_new, "Enter Number (2): ", strlen("Enter Number (2): ") == -1))
-				CheckError("Error While Writting (Sending)!\n");
+			if ( write(sockfd_new, "Enter Number (2): ", strlen("Enter Number (2): ")) == -1 )
+				printf("Error While Writting (Sending)!\n");
 			if (read(sockfd_new, &num2, sizeof(int)) == -1)
-					printf("Error While Getting info from client (Recieving)!\n");
-
-			do
-			{	operationChoice = 'N';
-				if (write(sockfd_new, "Enter Your Operation choice oe E to exit: ", strlen("Enter Your Operation choice oe E to exit: ") == -1))
-					CheckError("Error While Writting (Sending)!\n");
-				if (write(sockfd_new, &operationChoice, sizeof(char)))
-					CheckError("Error While Writting (Sending)!\n");
-				if (read(sockfd_new, &operationChoice, sizeof(char)) == -1)
-					printf("Error While Getting info from client (Recieving)!\n");
-
-				switch (operationChoice)
-				{
-					case '+': answer = num1 + num2; operationChoice = 'K'; break;
-					case '-': answer = num1 - num2; operationChoice = 'K';break;
-					case '*': answer = num1 * num2; operationChoice = 'K';break;
-					case '/': 
-						if (num2==0) answer = 0;
-						else answer =num1 / num2; 
-						break;
-					case '^': answer = num1 ^ num2; operationChoice = 'K';break;
-					case '%': answer = num1 % num2; operationChoice = 'K';break;
-					default:  operationChoice = 'N'; break;
-				}
+				printf("Error While Getting info from client (Recieving)!\n");
+			printf("num 2: %d\n", num2);
+/*
+			while (1)
+			{
+				bzero(bufferPtr, BUFFER_MAX);
+				if ( write(sockfd_new, "Enter Your Operation choice:", BUFFER_MAX) == -1 )
+					printf("Error While Writting (Sending)!\n");
 				
-			} while ( operationChoice == 'N');
+				bzero(bufferPtr, BUFFER_MAX);
+				if ( read(sockfd_new, bufferPtr, BUFFER_MAX) == -1 )
+					printf("Error While Getting info from client (Recieving)!\n");
+				printf("Operation selected is: %s", bufferPtr);
 
-			if (write(sockfd_new, &answer, sizeof(int)))
-				CheckError("Error While Writting (Sending)!\n");
+				if      (memcmp(bufferPtr, "+", 1) == 0) { answer = num1 + num2; memcpy(bufferPtr, "ok", 2);}
+				else if (memcmp(bufferPtr, "-", 1) == 0) { answer = num1 - num2; memcpy(bufferPtr, "ok", 2);}
+				else if (memcmp(bufferPtr, "*", 1) == 0) { answer = num1 * num2; memcpy(bufferPtr, "ok", 2);}
+				else if (memcmp(bufferPtr, "/", 1) == 0)
+				{
+					if (num2==0) answer = 0;
+					else answer = num1 / num2; 
+					memcpy(bufferPtr, "ok", 2);
+				}
+				else if (memcmp(bufferPtr, "^", 1) == 0)  { answer = num1 ^ num2; memcpy(bufferPtr, "ok", 2);}
+				else if (memcmp(bufferPtr, "\%", 1) == 0) { answer = num1 % num2; memcpy(bufferPtr, "ok", 2);}
+				else  										printf("\nInvalid Operation! ");							   
+
+				if ( write(sockfd_new, bufferPtr, BUFFER_MAX) == -1 )
+					printf("Error While Writting (Sending)!\n");
+				
+				if (memcmp(bufferPtr,"ok", 2) == 0) break;
+			}
+
+			if ( write(sockfd_new, &answer, sizeof(int)) == -1 )
+				printf("Error While Writting (Sending)!\n");
+*/		
+			if ( write(sockfd_new, "Continue: ", strlen("Continue: ")) == -1 )
+				printf("Error While Writting (Sending)!\n");
+			
+			bzero(bufferPtr, BUFFER_MAX);
+			if ( read(sockfd_new, bufferPtr, BUFFER_MAX) == -1 )
+				printf("Error While Getting info from client (Recieving)!\n");
+			printf("%s\n", bufferPtr);
+
+			// Abort Client Request 
+			if ( memcmp(bufferPtr,"N", 1)  == 0 || memcmp(bufferPtr,"n", 1)  == 0 ||
+				 memcmp(bufferPtr,"NO", 2) == 0 || memcmp(bufferPtr,"no", 2) == 0 || 
+				 memcmp(bufferPtr,"No", 2) == 0 ) break;
+			 
+			bzero(bufferPtr, BUFFER_MAX); 
+
 		}
+
 		printf("\n---------------------Server-Side::Connection Terminated Per Request----------------------.\n");
 
 		printf("Enter TURN-OFF to Turn Server OFF: ");
-			fgets(bufferPtr, BUFFER_MAX, stdin);
-			if (strncmp("TURN-EOF", bufferPtr, 10) == 0) break;
-			bzero(bufferPtr, BUFFER_MAX); 
+		scanf("%s", bufferPtr);
+		if (strncmp("TURN-EOF", bufferPtr, 10) == 0) break;
+		bzero(bufferPtr, BUFFER_MAX); 
 	}
 	printf("\n---------------------Server Shut-Down Per Request----------------------.\n");
 
