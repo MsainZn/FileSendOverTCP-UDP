@@ -18,11 +18,28 @@ int main (int argc, char* argv[])
 		exit(0);
 	}
 
+	// Initial confirmation client side
+	char checkSend;
+	while (1)
+	{
+		printf("Start Sending File [Y/N]: ");
+		scanf("%c", &checkSend);
+		if (checkSend == 'N') 
+		{
+			printf("Ask Again In 60 Seconds.\n");
+			sleep(60);
+		}
+		else
+			break;
+	} 
+
+
 	// Input Parameters  
-	const char* fileNameLocation = argv[2];
-	char* serverIP 			 = argv[3];
-	int portNumber   		 = atoi(argv[4]);			// 5500;
-	size_t BUFFER_MAX 	   	 = 1024;//atoi(argv[4]);    // 1024;
+	const char* fileNameLocation = argv[1];
+	char* serverIP 			 	 = argv[2];
+	int portNumber   			 = atoi(argv[3]);			// 5500;
+	size_t BUFFER_MAX 	   		 = 1024;//atoi(argv[4]);    // 1024;
+	
 
 	// Check IP integraty & server status
 	if (serverIP == NULL)
@@ -30,7 +47,6 @@ int main (int argc, char* argv[])
 		fprintf(stderr, "[-client] Error in Socket Initiation Due to Either WRONG IP-Address or Server is Currently OFF!\n");
 		exit(0);
 	}
-
 	// socket End-Point
 	int sockfd;
 	
@@ -43,13 +59,17 @@ int main (int argc, char* argv[])
 	// client buffer
 	char* bufferPtr   = (char*) calloc (BUFFER_MAX, sizeof(char));
 
-	
+	FILE* targetLogFile  = fopen(fileNameLocation, "r");
 
-	if (serverAddr == NULL || bufferPtr == NULL ) 
+	FILE* sendStatusFile = fopen("sendStatus.log", "wra");
+
+	fprintf (sendStatusFile, "DC-Counts \t Line-Sent \t Bytes-Sent \t Server-IP \t Server-Port \t Source-File-Name \n");
+	//fprintf (sendStatusFile, "DC-Counts \t Line-Sent \t Bytes-Sent \t Server-IP \t Server-Port \t Source-File-Name \n");
+
+	if (serverAddr == NULL || bufferPtr == NULL || targetLogFile == NULL) 
 		CheckError("[-client] Memory Allocation for sockadd_in strctures!\n");
 	else
 		printf("[+client] memory Allocation Successfully Completed.\n");
-
 
 	// client :: Initiation Socket via TCP Protocol & Error Check
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -73,20 +93,23 @@ int main (int argc, char* argv[])
 		CheckError("[-client] Error in Connecting to Server!\n");
 	else
 		printf("[+client] Connection Successfully Accepted.\n");
-	FILE* targetLogFile = fopen("kaftar", "r");
 	
-	printf("\n---------------------Client-Side::Connection Established Per Request----------------------.\n\n");
-	while (fgets(bufferPtr, BUFFER_MAX, targetLogFile))
-	{
+	printf("\n---------------------Client-Side::Sending Started------------------------\n\n");	
+	while (!feof(targetLogFile))
+	{ 
+		printf("%lu\n", ftell(targetLogFile));//sleep(2);
+		fgets(bufferPtr, BUFFER_MAX, targetLogFile);
+		fprintf(targetLogFile, "%s", bufferPtr);
 		if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
 			printf("Error While Writting (Sending)!\n");
 		bzero(bufferPtr, BUFFER_MAX);
-		sleep(10);
+		
 	}
-	printf("\n---------------------Client-Side::Connection Terminated Per Request----------------------.\n");
+	printf("\n---------------------Client-Side::Sending Has Ended----------------------\n\n");	
 
-	memset(bufferPtr, "EOF", 3);
-	if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
+	bzero(bufferPtr, BUFFER_MAX);
+
+	if (write(sockfd, "/END-PROCESS/", 13) == -1)
 		printf("Error While Writting (Sending)!\n");
 
     close(sockfd);
@@ -95,3 +118,34 @@ int main (int argc, char* argv[])
 
 	return 0;
 }
+
+
+/*
+
+	write(sockfd, "Ready to recieve Send Starts?", BUFFER_MAX);
+	read(sockfd, bufferPtr, BUFFER_MAX);
+
+	if (memcmp(bufferPtr, "yes", 3) == 0 || memcmp(bufferPtr, "y", 1) == 0 ||
+		memcmp(bufferPtr, "YES", 3) == 0 || memcmp(bufferPtr, "Y", 1) == 0 ||
+		memcmp(bufferPtr, "Yes", 3) == 0	)
+	{
+		bzero(bufferPtr, BUFFER_MAX);  			        
+		printf("\n---------------------Client-Side::Connection Established Per Request----------------------.\n\n");
+		while (fgets(bufferPtr, BUFFER_MAX, targetLogFile))
+		{
+			if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
+				printf("Error While Writting (Sending)!\n");
+			bzero(bufferPtr, BUFFER_MAX);
+			sleep(10);
+		}
+		printf("\n---------------------Client-Side::Connection Terminated Per Request----------------------.\n");
+
+		memset(bufferPtr, "EOF", 3);
+		if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
+			printf("Error While Writting (Sending)!\n");
+	}
+
+
+
+
+*/

@@ -18,7 +18,7 @@ int main (int argc, char* argv[])
 		exit(0);
 	}
 	// Input Parameters  
-	char* fileNameLocation	 	 = argv[1];
+	const char* fileNameLocation = argv[1];
 	int portNumber   		 	 = atoi(argv[2]); 			  // 5500;
 	size_t BUFFER_MAX 	   	 	 = 1024; // atoi(argv[4]);    // 1024;
 	size_t maxClientWaitingQueue = 5;	 // atoi(argv[5]);    // 5;
@@ -37,7 +37,7 @@ int main (int argc, char* argv[])
 	// client buffer
 	char* bufferPtr   = (char*) calloc (BUFFER_MAX, sizeof(char));
 
-	FILE* targetLogFile = fopen(argv[1], "wa");
+	FILE* targetLogFile = fopen(fileNameLocation, "a");
 
 	if (clientAddr == NULL || serverAddr == NULL || 
 		bufferPtr  == NULL || targetLogFile == NULL)
@@ -69,31 +69,33 @@ int main (int argc, char* argv[])
 	else
 		printf("[+server] Socket Successfully Binded.\n");
 	
-		// server :: Socket Listening
-		if (listen(sockfd, maxClientWaitingQueue) == -1)
-			CheckError("[-server] Error while Listening!\n");
-		else
-			printf("[+server] Listening...\n");
-		
-		sockfd_new = accept(sockfd, (struct sockaddr*) clientAddr, &socklen);
-		if (sockfd_new == -1)
-			CheckError("[-server] Error in Accepting Client Connection!\n");
-		else
-			printf("[+server] Connection Successfully Accepted.\n");
+	// server :: Socket Listening
+	if (listen(sockfd, maxClientWaitingQueue) == -1)
+		CheckError("[-server] Error while Listening!\n");
+	else
+		printf("[+server] Listening...\n");
+	
+	sockfd_new = accept(sockfd, (struct sockaddr*) clientAddr, &socklen);
+	if (sockfd_new == -1)
+		CheckError("[-server] Error in Accepting Client Connection!\n");
+	else
+		printf("[+server] Connection Successfully Accepted.\n");
 
-		printf("\n---------------------Server-Side::Connection Established Per Request----------------------.\n\n");	
-		while (1)
+
+	printf("\n---------------------Server-Side::Recieving Started----------------------.\n\n");	
+	while (1)
+	{
+		if (read(sockfd_new, bufferPtr, BUFFER_MAX) == -1)
+			printf("[-server] Error While Recieveing File!\n");
+		else	
 		{
-			if (memcmp(bufferPtr, "EOF", 3) == 0) break;
-
-			if (read(sockfd_new, bufferPtr, BUFFER_MAX) == -1)
-				printf("[-server] Error While Recieveing File!\n");
-			else	
-				fprintf(targetLogFile , bufferPtr);
-			bzero(bufferPtr, BUFFER_MAX);
+			if (memcmp(bufferPtr, "/END-PROCESS/", 13) == 0) break;
+			fprintf(targetLogFile, "%s", bufferPtr);
+			fprintf(stdout, "%s", bufferPtr);
 		}
-
-		printf("\n---------------------Server-Side::Connection Terminated Per Request----------------------.\n");
+		bzero(bufferPtr, BUFFER_MAX);
+	}
+	printf("\n---------------------Server-Side::Recieving Ended----------------------.\n\n");
 
 	close(sockfd);
 	close(sockfd_new);
@@ -114,6 +116,26 @@ int main (int argc, char* argv[])
 		bzero(bufferPtr, BUFFER_MAX); 
 	}
 	printf("\n---------------------Server Shut-Down Per Request----------------------.\n");
+
+
+
+
+			
+		printf("\n---------------------Server-Side::Connection Established Per Request----------------------.\n\n");	
+		while (1)
+		{
+			if (memcmp(bufferPtr, "EOF", 3) == 0) break;
+
+			if (read(sockfd_new, bufferPtr, BUFFER_MAX) == -1)
+				printf("[-server] Error While Recieveing File!\n");
+			else	
+				fprintf(targetLogFile , bufferPtr);
+			bzero(bufferPtr, BUFFER_MAX);
+		}
+
+		printf("\n---------------------Server-Side::Connection Terminated Per Request----------------------.\n");
+
+
 
 
 
