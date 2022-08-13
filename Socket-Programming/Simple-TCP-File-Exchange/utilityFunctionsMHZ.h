@@ -11,6 +11,10 @@
 #include <netdb.h>           //:: definitions of (struct hostnet) to store info of a given host & IPV-4
 #include <arpa/inet.h>       //:: inet()
 
+
+// Usefull functions
+
+
 void CheckError (const char* errMssg)
 {
     perror(errMssg);
