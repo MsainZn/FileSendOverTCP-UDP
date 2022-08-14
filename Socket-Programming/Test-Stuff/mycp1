@@ -1,0 +1,311 @@
+#### Looking in file /hub/ophubtp/log/logs.1 #####
+2022/08/01 06:44:39.275 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:39.286 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:39.286 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:39.342 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:39.375 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:39.377 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:39.403 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:41.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.00;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.08;CPUidle:99.92;MEMused:1.11;MEMfree:0.46;MEMavail:98.89;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:44:42.665 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:44:43.282 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:44:46.008 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:5000;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.09;CPUidle:99.91;MEMused:1.11;MEMfree:0.46;MEMavail:98.89;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:44:48.909 | TPPLUGINAPP02[25064] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17431, pgid = 17431, ppgid = 17431)
+2022/08/01 06:44:48.910 | TPPLUGINAPP02[17431] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25064
+2022/08/01 06:44:48.977 | TPPLUGINCCG02[25065] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17444, pgid = 17444, ppgid = 17444)
+2022/08/01 06:44:48.977 | TPPLUGINCCG02[17444] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25065
+2022/08/01 06:44:49.027 | TPPLUGINCAP02[25066] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17440, pgid = 17440, ppgid = 17440)
+2022/08/01 06:44:49.027 | TPPLUGINCAP02[17440] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25066
+2022/08/01 06:44:49.049 | TPPLUGOUTAPP02[25067] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17448, pgid = 17448, ppgid = 17448)
+2022/08/01 06:44:49.049 | TPPLUGOUTAPP02[17448] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25067
+2022/08/01 06:44:49.152 | TPPLUGOUTCCG02[25068] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17456, pgid = 17456, ppgid = 17456)
+2022/08/01 06:44:49.152 | TPPLUGOUTCCG02[17456] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25068
+2022/08/01 06:44:49.304 | TPPLUGOUTCAP02[25069] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17452, pgid = 17452, ppgid = 17452)
+2022/08/01 06:44:49.304 | TPPLUGOUTCAP02[17452] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25069
+2022/08/01 06:44:51.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.05;CPUnice:0.00;CPUsystem:0.09;CPUiowait:0.04;CPUtotbusy:0.18;CPUidle:99.82;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:44:51.482 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:44:51.573 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.574 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.574 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.586 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.586 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.643 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.674 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.677 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:51.703 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:44:54.966 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:44:55.582 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:44:56.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.00;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.03;CPUtotbusy:0.09;CPUidle:99.91;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:00.612 | TPISCAN02[17424] | notice | #1414 last <20220801A> ext 0 seq 67056, 0 get/s, 0 put/s, 0 sent/s, 0 write/s, 0 box, delta 2941, sleep 4012
+2022/08/01 06:45:02.007 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:5999;CPUS:16;CPUuser:0.39;CPUnice:0.00;CPUsystem:0.19;CPUiowait:0.06;CPUtotbusy:0.64;CPUidle:99.36;MEMused:1.12;MEMfree:0.47;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:03.781 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:03.874 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.875 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.875 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.887 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.887 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.943 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.975 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:03.978 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:04.002 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:07.006 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:5000;CPUS:16;CPUuser:0.25;CPUnice:0.00;CPUsystem:0.11;CPUiowait:0.03;CPUtotbusy:0.39;CPUidle:99.61;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:07.266 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:45:07.881 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:12.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.09;CPUidle:99.91;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:16.082 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:16.174 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.175 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.175 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.187 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.187 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.243 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.275 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.278 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:16.303 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:17.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.00;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.08;CPUidle:99.92;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:19.566 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:45:20.182 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:22.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.05;CPUiowait:0.01;CPUtotbusy:0.08;CPUidle:99.92;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:27.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.09;CPUidle:99.91;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:28.382 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:28.475 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.475 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.475 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.487 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.487 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.544 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.574 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.577 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:28.604 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:31.867 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:45:32.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.09;CPUidle:99.91;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:32.482 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:37.006 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:5000;CPUS:16;CPUuser:0.00;CPUnice:0.00;CPUsystem:0.11;CPUiowait:0.01;CPUtotbusy:0.13;CPUidle:99.87;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:39.606 | TPPLUGINAPP02[25201] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17431, pgid = 17431, ppgid = 17431)
+2022/08/01 06:45:39.606 | TPPLUGINAPP02[17431] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25201
+2022/08/01 06:45:39.651 | TPPLUGINCCG02[25202] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17444, pgid = 17444, ppgid = 17444)
+2022/08/01 06:45:39.651 | TPPLUGINCCG02[17444] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25202
+2022/08/01 06:45:39.699 | TPPLUGINCAP02[25203] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17440, pgid = 17440, ppgid = 17440)
+2022/08/01 06:45:39.700 | TPPLUGINCAP02[17440] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25203
+2022/08/01 06:45:39.732 | TPPLUGOUTAPP02[25204] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17448, pgid = 17448, ppgid = 17448)
+2022/08/01 06:45:39.732 | TPPLUGOUTAPP02[17448] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25204
+2022/08/01 06:45:39.822 | TPPLUGOUTCCG02[25205] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17456, pgid = 17456, ppgid = 17456)
+2022/08/01 06:45:39.822 | TPPLUGOUTCCG02[17456] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25205
+2022/08/01 06:45:39.976 | TPPLUGOUTCAP02[25206] | notice | #1184 Physical connection established with 127.0.0.1 (sid = 17452, pgid = 17452, ppgid = 17452)
+2022/08/01 06:45:39.976 | TPPLUGOUTCAP02[17452] | notice | #1184 Physical connection established with 127.0.0.1, child forked: pid 25206
+2022/08/01 06:45:40.681 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:40.775 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.775 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.775 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.788 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.788 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.844 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.875 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.878 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:40.903 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:42.006 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.08;CPUiowait:0.04;CPUtotbusy:0.13;CPUidle:99.87;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:44.167 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:45:44.782 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:47.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.05;CPUiowait:0.01;CPUtotbusy:0.08;CPUidle:99.92;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:52.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.00;CPUtotbusy:0.08;CPUidle:99.92;MEMused:1.12;MEMfree:0.46;MEMavail:98.88;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:52.983 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:45:53.076 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.076 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.076 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.089 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.089 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.146 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.176 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.179 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:53.205 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:45:56.467 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:45:56.948 | TSEDTPAHUB2.IN[17568] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.948 | TSEDTPAHUB2.IN[17568] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.948 | TSEDTPAHUB2.IN[17568] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.948 | TSEDTPAHUB2.IN[17568] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.949 | TSEDTPAHUB2.IN[17568] | notice | #9005 stopped
+2022/08/01 06:45:56.952 | TSEDTPOHUB2.IN[17491] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.952 | TSEDTPOHUB2.IN[17491] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.952 | TSEDTPOHUB2.IN[17491] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.952 | TSEDTPOHUB2.IN[17491] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.952 | TSEDTPOHUB2.IN[17491] | notice | #9005 stopped
+2022/08/01 06:45:56.952 | TSEDTPRHUB2.IN[17511] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.952 | TSEDTPWHUB2.IN[17466] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.952 | TSEDTPRHUB2.IN[17511] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.952 | TSEDTPWHUB2.IN[17466] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.952 | TSEDTPRHUB2.IN[17511] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.952 | TSEDTPWHUB2.IN[17466] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.952 | TSEDTPRHUB2.IN[17511] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.952 | TSEDTPWHUB2.IN[17466] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.952 | TSEDTPRHUB2.IN[17511] | notice | #9005 stopped
+2022/08/01 06:45:56.952 | TSEDTPWHUB2.IN[17466] | notice | #9005 stopped
+2022/08/01 06:45:56.953 | TSEDTPWHUBS.IN[17481] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.953 | TSEDTPWHUBS.IN[17481] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.953 | TSEDTPWHUBS.IN[17481] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.953 | TSEDTPWHUBS.IN[17481] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.953 | TSEDTPWHUBS.IN[17481] | notice | #9005 stopped
+2022/08/01 06:45:56.953 | TSEDTPOHUBS.IN[17488] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.953 | TSEDTPOHUBS.IN[17488] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.954 | TSEDTPOHUBS.IN[17488] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.954 | TSEDTPOHUBS.IN[17488] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.954 | TSEDTPOHUBS.IN[17488] | notice | #9005 stopped
+2022/08/01 06:45:56.954 | TSEDTPRHUBS.IN[17493] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 0
+2022/08/01 06:45:56.954 | TSEDTPRHUBS.IN[17493] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:45:56.954 | TSEDTPRHUBS.IN[17493] | notice | #1175 No physical connection, exiting
+2022/08/01 06:45:56.954 | TSEDTPRHUBS.IN[17493] | notice | #1073 Disconnection with HUB
+2022/08/01 06:45:56.954 | TSEDTPRHUBS.IN[17493] | notice | #9005 stopped
+2022/08/01 06:45:57.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.00;CPUnice:0.00;CPUsystem:0.08;CPUiowait:0.04;CPUtotbusy:0.11;CPUidle:99.89;MEMused:1.11;MEMfree:0.47;MEMavail:98.89;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:45:57.083 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:46:00.388 | TSEDTPOHUBS.OUT[17515] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:00.388 | TSEDTPOHUBS.OUT[17515] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:00.388 | TSEDTPOHUBS.OUT[17515] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:00.388 | TSEDTPOHUBS.OUT[17515] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:00.388 | TSEDTPOHUBS.OUT[17515] | notice | #9005 stopped
+2022/08/01 06:46:00.389 | TSEDTPWHUB2.OUT[17513] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:00.389 | TSEDTPOHUB2.OUT[17559] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:00.389 | TSEDTPRHUB2.OUT[17514] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:00.389 | TSEDTPWHUB2.OUT[17513] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:00.389 | TSEDTPWHUB2.OUT[17513] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:00.389 | TSEDTPRHUB2.OUT[17514] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:00.389 | TSEDTPRHUB2.OUT[17514] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:00.389 | TSEDTPOHUB2.OUT[17559] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:00.389 | TSEDTPOHUB2.OUT[17559] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:00.389 | TSEDTPRHUB2.OUT[17514] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:00.389 | TSEDTPRHUB2.OUT[17514] | notice | #9005 stopped
+2022/08/01 06:46:00.389 | TSEDTPWHUB2.OUT[17513] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:00.389 | TSEDTPWHUB2.OUT[17513] | notice | #9005 stopped
+2022/08/01 06:46:00.389 | TSEDTPOHUB2.OUT[17559] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:00.389 | TSEDTPOHUB2.OUT[17559] | notice | #9005 stopped
+2022/08/01 06:46:00.390 | TSEDTPRHUBS.OUT[17517] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:00.390 | TSEDTPRHUBS.OUT[17517] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:00.390 | TSEDTPRHUBS.OUT[17517] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:00.390 | TSEDTPRHUBS.OUT[17517] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:00.390 | TSEDTPRHUBS.OUT[17517] | notice | #9005 stopped
+2022/08/01 06:46:00.392 | TSEDTPWHUBS.OUT[17507] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:00.392 | TSEDTPWHUBS.OUT[17507] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:00.392 | TSEDTPWHUBS.OUT[17507] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:00.392 | TSEDTPWHUBS.OUT[17507] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:00.392 | TSEDTPWHUBS.OUT[17507] | notice | #9005 stopped
+2022/08/01 06:46:00.613 | TPISCAN02[17424] | notice | #1414 last <20220801A> ext 0 seq 67056, 0 get/s, 0 put/s, 0 sent/s, 0 write/s, 0 box, delta 2941, sleep 5986
+2022/08/01 06:46:02.006 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:5000;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.11;CPUiowait:0.01;CPUtotbusy:0.14;CPUidle:99.86;MEMused:1.10;MEMfree:0.48;MEMavail:98.90;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:46:04.387 | TSEDTPAHUB2.OUT[17486] | error | #1071 MMTP session <HUB>: disconnection request received, reason 3, sequence 3999
+2022/08/01 06:46:04.387 | TSEDTPAHUB2.OUT[17486] | notice | #1030 MMTP session <HUB>: closing physical connection
+2022/08/01 06:46:04.387 | TSEDTPAHUB2.OUT[17486] | notice | #1175 No physical connection, exiting
+2022/08/01 06:46:04.387 | TSEDTPAHUB2.OUT[17486] | notice | #1073 Disconnection with HUB
+2022/08/01 06:46:04.387 | TSEDTPAHUB2.OUT[17486] | notice | #9005 stopped
+2022/08/01 06:46:05.283 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:46:05.376 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.376 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.376 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.389 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.389 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.446 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.476 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.479 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:05.505 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+
+022/08/01 06:46:06.495 | TSEDSHOHUB2.IN[17468] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:408;CBR:408;>
+2022/08/01 06:46:06.495 | TSEDSHOHUB2.IN[17468] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:06.533 | TSEETFTHUBS.IN[17464] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:408;CBR:408;>
+2022/08/01 06:46:06.533 | TSEETFTHUBS.IN[17464] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:06.591 | TSEDRMAHUB1.IN[17469] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:408;CBR:408;>
+2022/08/01 06:46:06.591 | TSEDRMAHUB1.IN[17469] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:06.864 | TSEDSDAHUBS.IN[17492] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:416;CBR:416;>
+2022/08/01 06:46:06.864 | TSEDSDAHUBS.IN[17492] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:06.905 | TSEDBTSHUBS.IN[17496] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:408;CBR:408;>
+2022/08/01 06:46:06.905 | TSEDBTSHUBS.IN[17496] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:06.965 | TSEETFMHUBS.IN[17502] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:416;CBR:416;>
+2022/08/01 06:46:06.965 | TSEETFMHUBS.IN[17502] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:07.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.04;CPUnice:0.00;CPUsystem:0.09;CPUiowait:0.06;CPUtotbusy:0.19;CPUidle:99.81;MEMused:1.10;MEMfree:0.48;MEMavail:98.90;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:46:08.768 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:46:08.806 | TSEDPARHUBS.IN[17563] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:416;CBR:416;>
+2022/08/01 06:46:08.806 | TSEDPARHUBS.IN[17563] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:09.383 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:46:12.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.01;CPUnice:0.00;CPUsystem:0.06;CPUiowait:0.01;CPUtotbusy:0.09;CPUidle:99.91;MEMused:1.10;MEMfree:0.48;MEMavail:98.90;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:46:16.459 | TSEDMNAHUB2.IN[17668] | notice | #1252 STAT: <UBS:520;CBS:520;UBR:416;CBR:416;>
+2022/08/01 06:46:16.459 | TSEDMNAHUB2.IN[17668] | notice | #1252 STAT: <MWR:3;MWC:3;WCR:100;MRR:4;MRC:4;RCR:100>
+2022/08/01 06:46:17.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:4999;CPUS:16;CPUuser:0.03;CPUnice:0.00;CPUsystem:0.09;CPUiowait:0.03;CPUtotbusy:0.14;CPUidle:99.86;MEMused:1.10;MEMfree:0.48;MEMavail:98.90;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:46:17.583 | TSEARAFIC02.OUT[17611] | notice | #1371 Session : 20220801A Received Messages 4435/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:46:17.676 | TSEARAFIC04.OUT[17612] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.676 | TSEARAFIC06.OUT[17605] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.676 | TSEARAFIC03.OUT[17628] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.688 | TSEARAFIC05.OUT[17607] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.688 | TSEARAFIC01.OUT[17606] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.746 | TSEARAFIC07.OUT[17644] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.776 | TSECLEFIO01.OUT[17654] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.779 | TSEMSGSLEE0.OUT[17656] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:17.804 | TSETRASHOUT.OUT[17662] | notice | #1371 Session : 20220801A Received Messages 0/0 LastMsgid :                        
+2022/08/01 06:46:20.688 | TPPLUGINCAP02[25283] | notice | #1184 Physical connection established with 192.168.53.57 (sid = 17440, pgid = 17440, ppgid = 17440)
+2022/08/01 06:46:20.688 | TPPLUGINCAP02[17440] | notice | #1184 Physical connection established with 192.168.53.57, child forked: pid 25283
+2022/08/01 06:46:20.708 | TPPLUGINCAP02[25283] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPRHUB2>, options <1001001000000000>, ip <192.168.53.57>
+2022/08/01 06:46:20.709 | TSEDTPRHUB2.IN[25283] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPRHUB2>, options <1001001000000000>, ip <192.168.53.57>
+2022/08/01 06:46:20.711 | TSEDTPRHUB2.IN[25283] | notice | #1936 Slice Id Memory <6630705> is already here
+2022/08/01 06:46:20.711 | TSEDTPRHUB2.IN[25283] | notice | #1935 ShMemManager::setId <id=20,lb=1699,up=1729>
+2022/08/01 06:46:20.711 | TSEDTPRHUB2.IN[25283] | notice | #1933 WRITER CNX STARTED
+2022/08/01 06:46:20.711 | TSEDTPRHUB2.IN[25283] | notice | #1163 MMTP session <HUB>: logical connection established in 23 ms (slot = 123)
+2022/08/01 06:46:20.712 | TSEDTPRHUB2.IN[25283] | notice | #1248 MMTP session <HUB>: sending start request, msgid <4                       >
+2022/08/01 06:46:20.727 | TSEDTPRHUB2.IN[25283] | notice | #1252 STAT: <UBS:47;CBS:47;UBR:24;CBR:24;>
+2022/08/01 06:46:20.727 | TSEDTPRHUB2.IN[25283] | notice | #1252 STAT: <MWR:0;MWC:0;WCR:100;MRR:0;MRC:0;RCR:100>
+2022/08/01 06:46:20.739 | TSEDTPRHUB2.IN[25283] | notice | #1250 MMTP session <HUB>: start request accepted, msgid <4>, sequence <1>
+2022/08/01 06:46:20.804 | TPPLUGOUTCAP02[25284] | notice | #1184 Physical connection established with 192.168.53.57 (sid = 17452, pgid = 17452, ppgid = 17452)
+2022/08/01 06:46:20.804 | TPPLUGOUTCAP02[17452] | notice | #1184 Physical connection established with 192.168.53.57, child forked: pid 25284
+2022/08/01 06:46:20.824 | TPPLUGOUTCAP02[25284] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPRHUB2>, options <1101001000000000>, ip <192.168.53.57>
+2022/08/01 06:46:20.825 | TSEDTPRHUB2.OUT[25284] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPRHUB2>, options <1101001000000000>, ip <192.168.53.57>
+2022/08/01 06:46:20.826 | TSEDTPRHUB2.OUT[25284] | notice | #1256 Subscriber configuration loaded
+2022/08/01 06:46:20.828 | TSEDTPRHUB2.OUT[25284] | notice | #1163 Logical connection established in 24 ms
+2022/08/01 06:46:20.843 | TSEDTPRHUB2.OUT[25284] | notice | #1247 Start request received (msgid <20220801A0000059044     >)
+2022/08/01 06:46:20.843 | TSEDTPRHUB2.OUT[25284] | notice | #1441 sending request to iscan
+2022/08/01 06:46:20.843 | TPISCAN02[17424] | notice | #1428 received connection request from <TSEDTPRHUB2>, msgid <20220801A0000059044>
+2022/08/01 06:46:20.843 | TPISCAN02[17424] | warning | #1429 <TSEDTPRHUB2> already here
+2022/08/01 06:46:20.843 | TPISCAN02[17424] | notice | #1430 openning fifo </var/tmp/.HUBTP/TSEDTPRHUB2>
+2022/08/01 06:46:20.843 | TPISCAN02[17424] | notice | #1431 <TSEDTPRHUB2> connection accepted
+2022/08/01 06:46:20.843 | TSEDTPRHUB2.OUT[25284] | notice | #1445 ISCAN CNX STARTED
+2022/08/01 06:46:20.843 | TSEDTPRHUB2.OUT[25284] | notice | #1245 MMTP session <HUB>: accepting start request, msgid <20220801A0000059044>, sequence <1>
+2022/08/01 06:46:20.845 | TSEDTPRHUB2.OUT[25284] | notice | #1252 STAT: <LMR:20220801A0000059044;TSR:080106123958;LMS:20220801A0000059044;TSS:080106123958;LMA:;UBS:79;CBS:79;UBR:64;CBR:64;>
+2022/08/01 06:46:20.845 | TSEDTPRHUB2.OUT[25284] | notice | #1252 STAT: <MWR:0;MWC:0;WCR:100;MRR:0;MRC:0;RCR:100>
+2022/08/01 06:46:20.868 | TPPLUGINCAP02[25285] | notice | #1184 Physical connection established with 192.168.53.58 (sid = 17440, pgid = 17440, ppgid = 17440)
+2022/08/01 06:46:20.868 | TPPLUGINCAP02[17440] | notice | #1184 Physical connection established with 192.168.53.58, child forked: pid 25285
+2022/08/01 06:46:20.888 | TPPLUGINCAP02[25285] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPWHUB2>, options <1001001000000000>, ip <192.168.53.58>
+2022/08/01 06:46:20.889 | TSEDTPWHUB2.IN[25285] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPWHUB2>, options <1001001000000000>, ip <192.168.53.58>
+2022/08/01 06:46:20.891 | TSEDTPWHUB2.IN[25285] | notice | #1936 Slice Id Memory <6630705> is already here
+2022/08/01 06:46:20.891 | TSEDTPWHUB2.IN[25285] | notice | #1935 ShMemManager::setId <id=4,lb=463,up=493>
+2022/08/01 06:46:20.891 | TSEDTPWHUB2.IN[25285] | notice | #1933 WRITER CNX STARTED
+2022/08/01 06:46:20.891 | TSEDTPWHUB2.IN[25285] | notice | #1163 MMTP session <HUB>: logical connection established in 22 ms (slot = 59)
+2022/08/01 06:46:20.891 | TSEDTPWHUB2.IN[25285] | notice | #1248 MMTP session <HUB>: sending start request, msgid <4                       >
+2022/08/01 06:46:20.903 | TSEDTPWHUB2.IN[25285] | notice | #1252 STAT: <UBS:47;CBS:47;UBR:24;CBR:24;>
+2022/08/01 06:46:20.903 | TSEDTPWHUB2.IN[25285] | notice | #1252 STAT: <MWR:0;MWC:0;WCR:100;MRR:0;MRC:0;RCR:100>
+2022/08/01 06:46:20.905 | TPPLUGOUTCAP02[25286] | notice | #1184 Physical connection established with 192.168.53.58 (sid = 17452, pgid = 17452, ppgid = 17452)
+2022/08/01 06:46:20.906 | TPPLUGOUTCAP02[17452] | notice | #1184 Physical connection established with 192.168.53.58, child forked: pid 25286
+2022/08/01 06:46:20.913 | TSEDTPWHUB2.IN[25285] | notice | #1250 MMTP session <HUB>: start request accepted, msgid <4>, sequence <1>
+2022/08/01 06:46:20.937 | TPPLUGOUTCAP02[25286] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPWHUB2>, options <1101001000000000>, ip <192.168.53.58>
+2022/08/01 06:46:20.937 | TSEDTPWHUB2.OUT[25286] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPWHUB2>, options <1101001000000000>, ip <192.168.53.58>
+2022/08/01 06:46:20.937 | TSEDTPWHUB2.OUT[25286] | notice | #1256 Subscriber configuration loaded
+2022/08/01 06:46:20.937 | TSEDTPWHUB2.OUT[25286] | notice | #1163 Logical connection established in 29 ms
+2022/08/01 06:46:20.949 | TSEDTPWHUB2.OUT[25286] | notice | #1247 Start request received (msgid <20220801A0000059044     >)
+2022/08/01 06:46:20.949 | TSEDTPWHUB2.OUT[25286] | notice | #1441 sending request to iscan
+2022/08/01 06:46:20.950 | TPISCAN02[17424] | notice | #1428 received connection request from <TSEDTPWHUB2>, msgid <20220801A0000059044>
+2022/08/01 06:46:20.950 | TPISCAN02[17424] | warning | #1429 <TSEDTPWHUB2> already here
+2022/08/01 06:46:20.950 | TPISCAN02[17424] | notice | #1430 openning fifo </var/tmp/.HUBTP/TSEDTPWHUB2>
+2022/08/01 06:46:20.950 | TPISCAN02[17424] | notice | #1431 <TSEDTPWHUB2> connection accepted
+2022/08/01 06:46:20.950 | TSEDTPWHUB2.OUT[25286] | notice | #1445 ISCAN CNX STARTED
+2022/08/01 06:46:20.950 | TSEDTPWHUB2.OUT[25286] | notice | #1245 MMTP session <HUB>: accepting start request, msgid <20220801A0000059044>, sequence <1>
+2022/08/01 06:46:20.952 | TSEDTPWHUB2.OUT[25286] | notice | #1252 STAT: <LMR:20220801A0000059044;TSR:080106123958;LMS:20220801A0000059044;TSS:080106123958;LMA:;UBS:79;CBS:79;UBR:64;CBR:64;>
+2022/08/01 06:46:20.952 | TSEDTPWHUB2.OUT[25286] | notice | #1252 STAT: <MWR:0;MWC:0;WCR:100;MRR:0;MRC:0;RCR:100>
+2022/08/01 06:46:20.968 | TPPLUGINCAP02[25287] | notice | #1184 Physical connection established with 192.168.53.53 (sid = 17440, pgid = 17440, ppgid = 17440)
+2022/08/01 06:46:20.968 | TPPLUGINCAP02[17440] | notice | #1184 Physical connection established with 192.168.53.53, child forked: pid 25287
+2022/08/01 06:46:20.988 | TPPLUGINCAP02[25287] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPAHUB2>, options <1001001000000000>, ip <192.168.53.53>
+2022/08/01 06:46:20.989 | TSEDTPAHUB2.IN[25287] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPAHUB2>, options <1001001000000000>, ip <192.168.53.53>
+2022/08/01 06:46:20.991 | TSEDTPAHUB2.IN[25287] | notice | #1936 Slice Id Memory <6630705> is already here
+2022/08/01 06:46:20.991 | TSEDTPAHUB2.IN[25287] | notice | #1935 ShMemManager::setId <id=23,lb=1792,up=1822>
+2022/08/01 06:46:20.991 | TSEDTPAHUB2.IN[25287] | notice | #1933 WRITER CNX STARTED
+2022/08/01 06:46:20.991 | TSEDTPAHUB2.IN[25287] | notice | #1163 MMTP session <HUB>: logical connection established in 22 ms (slot = 67)
+2022/08/01 06:46:20.991 | TSEDTPAHUB2.IN[25287] | notice | #1248 MMTP session <HUB>: sending start request, msgid <4                       >
+2022/08/01 06:46:21.003 | TSEDTPAHUB2.IN[25287] | notice | #1252 STAT: <UBS:47;CBS:47;UBR:24;CBR:24;>
+2022/08/01 06:46:21.003 | TSEDTPAHUB2.IN[25287] | notice | #1252 STAT: <MWR:0;MWC:0;WCR:100;MRR:0;MRC:0;RCR:100>
+2022/08/01 06:46:21.021 | TSEDTPAHUB2.IN[25287] | notice | #1250 MMTP session <HUB>: start request accepted, msgid <4>, sequence <1>
+2022/08/01 06:46:21.068 | TSEMSGRLC.OUT[17648] | notice | #1371 Session : 20220801A Received Messages 62536/0 LastMsgid :20220801A0000067056     
+2022/08/01 06:46:21.684 | TSEMSGSLE.OUT[17653] | notice | #1371 Session : 20220801A Received Messages 4519/0 LastMsgid :20220801A0000059044     
+2022/08/01 06:46:23.005 | TPHU001_MASTERD[17228] | notice | #STAT SampleSize:5999;CPUS:16;CPUuser:0.02;CPUnice:0.00;CPUsystem:0.05;CPUiowait:0.04;CPUtotbusy:0.12;CPUidle:99.88;MEMused:1.11;MEMfree:0.48;MEMavail:98.89;SWAPused:0.00;SWAPfree:100.00;
+2022/08/01 06:46:24.670 | TPPLUGINCAP02[25288] | notice | #1184 Physical connection established with 192.168.53.56 (sid = 17440, pgid = 17440, ppgid = 17440)
+2022/08/01 06:46:24.670 | TPPLUGINCAP02[17440] | notice | #1184 Physical connection established with 192.168.53.56, child forked: pid 25288
+2022/08/01 06:46:24.690 | TPPLUGINCAP02[25288] | notice | #1041 MMTP session <HUB>: connection request received, user <TSEDTPOHUB2>, options <1001001000000000>, ip <192.168.53.56>

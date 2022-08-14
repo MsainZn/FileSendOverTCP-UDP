@@ -81,7 +81,6 @@ int main (int argc, char* argv[])
 	else
 		printf("[+server] Connection Successfully Accepted.\n");
 
-
 	printf("\n---------------------Server-Side::Recieving Started----------------------.\n\n");	
 	while (1)
 	{

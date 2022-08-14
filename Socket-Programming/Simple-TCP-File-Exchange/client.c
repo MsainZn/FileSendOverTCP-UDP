@@ -33,20 +33,19 @@ int main (int argc, char* argv[])
 			break;
 	} 
 
-
 	// Input Parameters  
 	const char* fileNameLocation = argv[1];
 	char* serverIP 			 	 = argv[2];
 	int portNumber   			 = atoi(argv[3]);			// 5500;
 	size_t BUFFER_MAX 	   		 = 1024;//atoi(argv[4]);    // 1024;
 	
-
 	// Check IP integraty & server status
 	if (serverIP == NULL)
 	{
 		fprintf(stderr, "[-client] Error in Socket Initiation Due to Either WRONG IP-Address or Server is Currently OFF!\n");
 		exit(0);
 	}
+
 	// socket End-Point
 	int sockfd;
 	
@@ -60,11 +59,10 @@ int main (int argc, char* argv[])
 	char* bufferPtr   = (char*) calloc (BUFFER_MAX, sizeof(char));
 
 	FILE* targetLogFile  = fopen(fileNameLocation, "r");
-
-	FILE* sendStatusFile = fopen("sendStatus.log", "wra");
+	FILE* sendStatusFile = fopen("sendStatus.log", "w");
 
 	fprintf (sendStatusFile, "DC-Counts \t Line-Sent \t Bytes-Sent \t Server-IP \t Server-Port \t Source-File-Name \n");
-	//fprintf (sendStatusFile, "DC-Counts \t Line-Sent \t Bytes-Sent \t Server-IP \t Server-Port \t Source-File-Name \n");
+	fprintf (sendStatusFile, "DC-Counts \t Line-Sent \t Bytes-Sent \t Server-IP \t Server-Port \t Source-File-Name \n");
 
 	if (serverAddr == NULL || bufferPtr == NULL || targetLogFile == NULL) 
 		CheckError("[-client] Memory Allocation for sockadd_in strctures!\n");
@@ -93,7 +91,7 @@ int main (int argc, char* argv[])
 		CheckError("[-client] Error in Connecting to Server!\n");
 	else
 		printf("[+client] Connection Successfully Accepted.\n");
-	
+
 	printf("\n---------------------Client-Side::Sending Started------------------------\n\n");	
 	while (!feof(targetLogFile))
 	{ 
@@ -103,7 +101,7 @@ int main (int argc, char* argv[])
 		if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
 			printf("Error While Writting (Sending)!\n");
 		bzero(bufferPtr, BUFFER_MAX);
-		
+
 	}
 	printf("\n---------------------Client-Side::Sending Has Ended----------------------\n\n");	
 

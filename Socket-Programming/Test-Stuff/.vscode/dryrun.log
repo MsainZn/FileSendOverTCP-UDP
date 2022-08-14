@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/Test-Stuff'
+make: Leaving directory '/home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/Test-Stuff'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
