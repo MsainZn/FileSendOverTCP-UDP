@@ -47,7 +47,7 @@ int main (int argc, char* argv[])
 
 
     // File Descriptors (FILE*)
-    int sendDisc, recvDisc;
+    int sendDesc, recvDesc;
 
     // File Descriptors (FILE*)
     struct stat sendFileInfo;
@@ -77,15 +77,15 @@ int main (int argc, char* argv[])
 
         // File Status @ Sender 
         sendFileptr = fopen(sendFileName, "r");
-        sendDisc    = fileno(sendFileptr);
-        fstat(sendDisc, &sendFileInfo);
+        sendDesc    = fileno(sendFileptr);
+        fstat(sendDesc, &sendFileInfo);
         sendFileMem = sendFileInfo.st_size;
         fclose(sendFileptr);
         
         // File Status @ Reciever 
         recvFileptr = fopen(recvFileName, "r");
-        recvDisc    = fileno(recvFileptr);
-        fstat(recvDisc, &recieveFileInfo);
+        recvDesc    = fileno(recvFileptr);
+        fstat(recvDesc, &recieveFileInfo);
         recvFileMem = recieveFileInfo.st_size;
         fclose(recvFileptr);
 
@@ -142,7 +142,15 @@ int main (int argc, char* argv[])
     }
 
             
-   
-
     return 0;
 }
+
+
+/*
+    gets(str) == scanf("%[^\n]s", str);
+    %[^\n] :: supports whitespace and terminates with newline (\n))
+
+    use fflush(stdin) after getting contents from TUI
+
+
+*/

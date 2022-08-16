@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Aug 14 12:54:01 2022
+# Make data base, printed on Tue Aug 16 14:38:18 2022
 
 # Variables
 
@@ -81,7 +81,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/msain1995-P310-D3:@/tmp/.ICE-unix/1592,unix/msain1995-P310-D3:/tmp/.ICE-unix/1592
+SESSION_MANAGER = local/msain1995-P310-D3:@/tmp/.ICE-unix/1647,unix/msain1995-P310-D3:/tmp/.ICE-unix/1647
 # environment
 CINNAMON_SOFTWARE_RENDERING = 1
 # environment
@@ -99,7 +99,7 @@ XDG_SESSION_DESKTOP = cinnamon2d
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 792893
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2518
 # environment
 MUFFIN_NO_SHADOWS = 1
 # automatic
@@ -115,7 +115,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1661
+SSH_AGENT_PID = 1716
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -193,8 +193,6 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = en_US.UTF-8
 # environment
-NO_AT_BRIDGE = 1
-# environment
 CINNAMON_VERSION = 5.2.7
 # environment
 QT_ACCESSIBILITY = 1
@@ -233,9 +231,9 @@ CLUTTER_PAINT = disable-culling
 # environment
 LANG = C
 # environment
-VSCODE_PID = 792893
+VSCODE_PID = 2518
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=12/133=9%
+# Load=110/1024=11%, Rehash=0, Collisions=12/132=9%
 
 # Pattern-specific Variable Values
 
@@ -243,9 +241,9 @@ VSCODE_PID = 792893
 
 # Directories
 
-# . (device 66307, inode 9175138): 9 files, no impossibilities.
+# . (device 66307, inode 9175138): 14 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -294,14 +292,14 @@ GNUmakefile:
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
+
+# strcache buffers: 1 (0) / strings = 22 / storage = 259 B / avg = 11 B
  
+# current buf: size = 8162 B / used = 259 B / count = 22 / avg = 11 B
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 197 B / avg = 11 B
-# current buf: size = 8162 B / used = 197 B / count = 17 / avg = 11 B
-
-# strcache performance: lookups = 20 / hit rate = 15%
+# strcache performance: lookups = 25 / hit rate = 12%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Sun Aug 14 12:54:01 2022
+# Load=22/8192=0%, Rehash=0, Collisions=1/25=4%
+# Finished Make data base on Tue Aug 16 14:38:18 2022
 
  
