@@ -106,9 +106,7 @@ int main (int argc, char* argv[])
         }        
         else if (remainMem < BUFFER_MAX) sendBufferSize = remainMem;
         else                             sendBufferSize = BUFFER_MAX;  
-
-        sendBuffer = (char*) calloc(sendBufferSize, sizeof(char));  
-        
+       
         // Send Statistics
         fprintf(stdout, "Recieved Memory is: %lu\nRemaining Memory is: %d\nSend Memory is: %lu\nMax Buffer-Size is: %lu\n", 
                                                 recvFileMem, remainMem, sendBufferSize, BUFFER_MAX);

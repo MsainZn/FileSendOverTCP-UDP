@@ -21,7 +21,7 @@ int main()
         FD_SET(STDIN_FILENO, &s);
         timeout.tv_sec = 10; timeout.tv_usec = 0;
         sFlag = select(STDIN_FILENO+1, &s, NULL, NULL, &timeout);
-        if      (sFlag < 0) _exit(0);
+        if      (sFlag < 0) exit(0);
         else if (sFlag == 0) 
         {
             fflush(stdout);
