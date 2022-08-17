@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 17 10:50:31 2022
+# Make data base, printed on Wed Aug 17 18:19:58 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ GDMSESSION = cinnamon2d
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/Simple-TCP-File-Exchange
+CURDIR := /home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Exchange
 # makefile
 SHELL = /bin/sh
 # environment
@@ -107,7 +107,7 @@ MUFFIN_NO_SHADOWS = 1
 # environment
 DISPLAY = :0
 # environment
-PWD = /home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/Simple-TCP-File-Exchange
+PWD = /home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Exchange
 # environment
 QT_QPA_PLATFORMTHEME = qt5ct
 # default
@@ -193,6 +193,8 @@ GDK_BACKEND = x11
 # environment
 LC_PAPER = en_US.UTF-8
 # environment
+NO_AT_BRIDGE = 1
+# environment
 CINNAMON_VERSION = 5.2.7
 # environment
 QT_ACCESSIBILITY = 1
@@ -233,7 +235,7 @@ LANG = C
 # environment
 VSCODE_PID = 2196
 # variable set hash-table stats:
-# Load=110/1024=11%, Rehash=0, Collisions=12/132=9%
+# Load=111/1024=11%, Rehash=0, Collisions=12/133=9%
 
 # Pattern-specific Variable Values
 
@@ -241,7 +243,7 @@ VSCODE_PID = 2196
 
 # Directories
 
-# . (device 66307, inode 1971293): 9 files, no impossibilities.
+# . (device 66307, inode 8394102): 9 files, no impossibilities.
 
 # 9 files, no impossibilities in 1 directories.
 
@@ -279,9 +281,9 @@ makefile:
 #  File has not been updated.
 
 # Not a target:
+ 
 GNUmakefile:
 #  Implicit rule search has been done.
- 
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -300,6 +302,6 @@ GNUmakefile:
 # strcache performance: lookups = 20 / hit rate = 15%
 # hash-table stats:
 # Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Wed Aug 17 10:50:31 2022
+# Finished Make data base on Wed Aug 17 18:19:58 2022
 
  

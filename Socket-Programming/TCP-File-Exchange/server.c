@@ -5,7 +5,7 @@
 	(2) ./server FILENAME PORT_NUMBER SLEEP_TIMER MAX_BUFFER_SIZE
 		Example: ./server mainFile2.log 5500 10 4096
 	(3) ./client FILENAME SERVER_ADDR PORT_NUMBER
-		Example: mainFile.log  5500
+		Example: ./client mainFile.log 172.17.34.89 5500
 */	
 
 #include "utilityFunctionsMHZ.h"
@@ -28,15 +28,24 @@ int main (int argc, char* argv[])
 	// Input Parameters  
 	const char* fileLocFull = argv[1];
 	int portNumber          = atoi(argv[2]); 	     
-	size_t BUFFER_MAX       = atoi(argv[3]);	 	
-	size_t sleepTimer       = atoi(argv[4]); 
+	size_t sleepTimer       = atoi(argv[3]); 
+	size_t BUFFER_MAX       = atoi(argv[4]);
 	size_t WaitQueue        = 5;
 	
 	// server :: Socket Accept Client Request
 	socklen_t socklen = sizeof(struct sockaddr_in);
 
 	// File Process, Data Structure (NACK is the Sender/Client Side)
-	FILE* filePtr_ACK;
+	FILE* filePtr_ACK = fopen(fileLocFull, "r");
+	if (filePtr_ACK == NULL) 
+		{
+			fprintfIO (NULL,"[-server] Not Such File Name Exists To Send!\n", 1, 0);
+			filePtr_ACK = fopen(fileLocFull, "w");
+		}
+	else
+		fprintfIO(NULL, "[+server] File Selected For Sending Successfully Found.\n", 1, 0);
+	fclose(filePtr_ACK);
+
 	int fileDes_ACK;
     unsigned long fileMemory_ACK = 0;
     struct stat fileInfo_ACK;
@@ -92,15 +101,17 @@ int main (int argc, char* argv[])
 
 	// Establishing BUFFER_MAX_SIZE (Set Sender/Client Buffer-Size Equal to Server)
 	if (write(sockfd_new, &BUFFER_MAX, sizeof(size_t)) == -1)
-		fprintfIO(NULL, "[-client] Error in Buffer Size Negitiation!\n", 1, 1); 
+		fprintfIO(NULL, "[-server] Error in Buffer Size Negitiation!\n", 1, 1); 
 	else 
-		fprintfIO(NULL, "[+client] Buffer Size is Set Equal to Server.\n", 1, 0);
+		fprintfIO(NULL, "[+server] Buffer-Size is Sent to client.\n", 1, 0);
 	
 	// Initializing Sender Sleep Clock (Set Sender/Client Buffer-Size Equal to Server)
 	if (write(sockfd_new, &sleepTimer, sizeof(size_t)) == -1)
-		fprintfIO(NULL, "[-client] Error in Sleep Timer Negitiation!\n", 1, 1); 
+		fprintfIO(NULL, "[-server] Error in Sleep Timer Negitiation!\n", 1, 1); 
 	else 
-		fprintfIO(NULL, "[+client] Sleep Timer is Set Equal to Server\n", 1, 0); 
+		fprintfIO(NULL, "[+server] Sleep-Timer is Sent to client\n", 1, 0); 
+
+	fprintf(stdout, "Sleep Timer: %lu\t Buffer Size: %lu\n", sleepTimer, BUFFER_MAX);
 
 	// Server Buffer
 	char* bufferPtr;
@@ -115,9 +126,7 @@ int main (int argc, char* argv[])
 	int ACKFLAG = 0;
 	unsigned sendRecvCounts;
 	unsigned long OveralIteration = 0;
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n---------------------Server-Side::Recieving Started-----------------------\n\n", 1, 0);
+	fprintfIO(NULL, "**********************Server-Side::Recieving Started**************************\n", 1, 0);
 	while (1)
 	{
 		// Exit Condition
@@ -203,9 +212,7 @@ int main (int argc, char* argv[])
                                                 OveralIteration, fileMemory_ACK, remainMem);		
 	
 	}
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n---------------------Server-Side::Recieving Ended-----------------------\n\n", 1, 0);
+	fprintfIO(NULL, "***********************Server-Side::Recieving Ended***************************\n", 1, 0);
 	
 	close(sockfd);
 	close(sockfd_new);
@@ -214,40 +221,3 @@ int main (int argc, char* argv[])
 
 	return 0;
 }
-
-
-/*
-
-	
-	while (1)
-	{
-		printf("Enter TURN-OFF to Turn Server OFF: ");
-		scanf("%s", bufferPtr);
-		if (strncmp("TURN-EOF", bufferPtr, 10) == 0) break;
-		bzero(bufferPtr, BUFFER_MAX); 
-	}
-	printf("\n---------------------Server Shut-Down Per Request----------------------.\n");
-
-
-
-
-			
-		printf("\n---------------------Server-Side::Connection Established Per Request----------------------.\n\n");	
-		while (1)
-		{
-			if (memcmp(bufferPtr, "EOF", 3) == 0) break;
-
-			if (read(sockfd_new, bufferPtr, BUFFER_MAX) == -1)
-				printf("[-server] Error While Recieveing File!\n");
-			else	
-				fprintf(targetLogFile , bufferPtr);
-			bzero(bufferPtr, BUFFER_MAX);
-		}
-
-		printf("\n---------------------Server-Side::Connection Terminated Per Request----------------------.\n");
-
-
-
-
-
-*/

@@ -3,9 +3,9 @@
 	(1) make all
 		if no make was provided then gcc server.c utilityFunctionsMHZ.h -o server
 	(2) ./server FILENAME PORT_NUMBER SLEEP_TIMER MAX_BUFFER_SIZE
-		Example: ./server 5500
+		Example: ./server mainFile2.log 5500 10 4096
 	(3) ./client FILENAME SERVER_ADDR PORT_NUMBER 
-		Example: mainFile.log 172.17.34.89 5500
+		Example: ./client mainFile.log 172.17.34.89 5500
 */	
 
 #include "utilityFunctionsMHZ.h"
@@ -26,7 +26,7 @@ int main (int argc, char* argv[])
 	// Input Parameters  
 	const char* fileLocFull = argv[1];
 	char* serverIP 			= argv[2];
-	int portNumber   		= atoi(argv[3]);			// 5500;
+	int portNumber   		= atoi(argv[3]);
 
 	// File Process, Data Structure (NACK is the Sender/Client Side)
 	FILE* filePtr_NACK;
@@ -46,7 +46,8 @@ int main (int argc, char* argv[])
 		fprintfIO (NULL,"[-client] Not Such File Name Exists To Send!\n", 1, 1);
 	else
 		fprintfIO(NULL, "[+client] File Selected For Sending Successfully Found.\n", 1, 0);
-	
+	fclose(filePtr_NACK);
+
 	// Create Socket via TCP Protocol & Error Check
 	int sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd == -1)
@@ -99,9 +100,7 @@ int main (int argc, char* argv[])
 	int ACKFLAG = 0;
 	unsigned sendRecvCounts;
 	unsigned long OveralIteration = 0;
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n---------------------Client-Side::Sending Started------------------------\n\n", 1, 0);
+	fprintfIO(NULL, "**********************Client-Side::Sending Started**************************\n", 1, 0);
 	while (1)
 	{
 		// Exit Condition
@@ -198,9 +197,7 @@ int main (int argc, char* argv[])
                                                 OveralIteration, fileMemory_ACK, remainMem);		
 	
 	}
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n-------------------------------------------------------------------------\n\n", 1, 0);
-	fprintfIO(NULL, "\n----------------------Client-Side::Sending Has Ended---------------------\n\n", 1, 0);	
+	fprintfIO(NULL, "***********************Client-Side::Sending Ended***************************\n", 1, 0);;	
 
     close(sockfd);
 	free(serverAddr);
@@ -209,33 +206,3 @@ int main (int argc, char* argv[])
 	return 0;
 }
 
-
-/*
-
-	write(sockfd, "Ready to recieve Send Starts?", BUFFER_MAX);
-	read(sockfd, bufferPtr, BUFFER_MAX);
-
-	if (memcmp(bufferPtr, "yes", 3) == 0 || memcmp(bufferPtr, "y", 1) == 0 ||
-		memcmp(bufferPtr, "YES", 3) == 0 || memcmp(bufferPtr, "Y", 1) == 0 ||
-		memcmp(bufferPtr, "Yes", 3) == 0	)
-	{
-		bzero(bufferPtr, BUFFER_MAX);  			        
-		printf("\n---------------------Client-Side::Connection Established Per Request----------------------.\n\n");
-		while (fgets(bufferPtr, BUFFER_MAX, targetLogFile))
-		{
-			if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
-				printf("Error While Writting (Sending)!\n");
-			bzero(bufferPtr, BUFFER_MAX);
-			sleep(10);
-		}
-		printf("\n---------------------Client-Side::Connection Terminated Per Request----------------------.\n");
-
-		memset(bufferPtr, "EOF", 3);
-		if (write(sockfd, bufferPtr, BUFFER_MAX) == -1)
-			printf("Error While Writting (Sending)!\n");
-	}
-
-
-
-
-*/
