@@ -14,7 +14,7 @@ int main (int argc, char* argv[])
 {
 	// Input Parameters Error Check
 	if (argc < 4) 
-		fprintfSwitchable(NULL, 1, "[-client] Please use the given format: ./client SERVER_ADDR PORT_NUMBER\n");
+		fprintfSwitchable(NULL, 1, "[-client] Please use the given format: ./client FILENAME SERVER_ADDR PORT_NUMBER\n");
 
 	// Initial confirmation client side
 	char checkSend;
