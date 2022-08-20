@@ -137,21 +137,28 @@ int main (int argc, char* argv[])
         if (read(sockfd, &fileInfo_ACK, sizeof(struct stat)) == -1)
 			fprintfIO(NULL, "[-client] Error in reading File Info!\n", 1, 1); 
 		fileMemory_ACK = fileInfo_ACK.st_size;
+		fprintfIO(NULL, "[+client] ACK Memory is Recieved Sucesfully.\n", 1, 0); 
 
 		// Send-Recieve Validity
         remainMem = fileMemory_NACK - fileMemory_ACK;
-        if      (remainMem < 0)
-			fprintfIO(NULL, "[-client] Remain Bytes Cannot be Below Zero!!!\n", 1, 1); 
-        else if (remainMem == 0) 
-			continue;
-
+			
 		// Send Expecting Data Size For Server
 		if (write(sockfd, &remainMem, sizeof(int)) == -1)
 			fprintfIO(NULL, "[-client] Failed To send Remaining Memory Info!\n", 1, 1); 
 		
-		// Session Overview
+				// Session Overview
 		fprintf(stdout, "[+client] Session [%lu] Overview:\nACK Memory is: %lu\nNACK Memory is: %lu\nRemaining Memory is: %d\n", 
                                                 OveralIteration, fileMemory_ACK, fileMemory_NACK, remainMem);
+
+		// Check The Remaining Size Before Going Further
+		if      (remainMem < 0)
+			fprintfIO(NULL, "[-client] Remain Bytes Cannot be Below Zero!!!\n", 1, 1); 
+        else if (remainMem == 0) 
+		{
+			fprintfIO(NULL, "[+client] Remaining Memory is Zero. Process Will Contine After A Short tTimeout\n", 1, 0); 
+			continue;
+		}
+
 		// Sending Process
 		while (remainMem)
 		{
@@ -176,13 +183,15 @@ int main (int argc, char* argv[])
 			// Sending Data From Buffer to Server
 			while (write(sockfd, bufferPtr, BUFFER_USED) == -1)
 				fprintfIO(NULL, "[-Client] Error While Sending!\n", 1, 0); 
-				
+			fprintfIO(NULL, "[-Client] Data Sent.\n", 1, 0); 
+
 			// Recv ACK From Server
 			while (read(sockfd, &ACKFLAG, sizeof(int)) == -1)	
 			{
 				bzero(bufferPtr, BUFFER_USED); 
 				fprintfIO(NULL, "[-Client] Error While Recieving ACK !\n", 1, 0); 
 			}
+			fprintfIO(NULL, "[-Client] ACK Recieved.\n", 1, 0);  
 
 			// In Session Statistics	
 			remainMem      -= BUFFER_USED;

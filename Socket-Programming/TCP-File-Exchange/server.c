@@ -151,7 +151,7 @@ int main (int argc, char* argv[])
 
 		// Sending Session Started
 		OveralIteration++;
-
+		fprintf(stdout, "[+server] Session %lu Started:\n", OveralIteration);
 		// File Status @ Server (Reciever) 
         filePtr_ACK = fopen(fileLocFull, "r");
         fileDes_ACK = fileno(filePtr_ACK);
@@ -162,14 +162,24 @@ int main (int argc, char* argv[])
 		// Send ACK Status
         if (write(sockfd_new, &fileInfo_ACK, sizeof(struct stat)) == -1)
 			fprintfIO(NULL, "[-server] Error in Sending File Info!\n", 1, 1); 
-		
+		fprintfIO(NULL, "[+server] File Info (size) Sent Successfully\n", 1, 0); 
+
 		// Recieve Expecting Data Size From Client
 		if (read(sockfd_new, &remainMem, sizeof(int)) == -1)
 			fprintfIO(NULL, "[-server] Failed To send Remaining Memory Info!\n", 1, 1); 
-		
+		fprintfIO(NULL, "[+server] Remained Size is Recieved Successfully.\n", 1, 0); 
+
 		// Session Overview
-		fprintf(stdout, "[+server] Session [%lu] ACK Memory is: %lu\n", 
-                                                OveralIteration, fileMemory_ACK);
+		fprintf(stdout, "[+server] Total ACK Memory: %lu :: Total Remained Memory is: %d\n", fileMemory_ACK, remainMem);
+
+		// Check The Remaining Size Before Going Further
+		if      (remainMem < 0)
+			fprintfIO(NULL, "[-server] Remain Bytes Cannot be Below Zero!!!\n", 1, 1); 
+        else if (remainMem == 0) 
+		{
+			fprintfIO(NULL, "[+server] Remaining Memory is Zero. Process Will Contine After A Short Timeout\n", 1, 0); 
+			continue;
+		}
 
 		// Recieving Process
 		while(remainMem)
@@ -177,6 +187,7 @@ int main (int argc, char* argv[])
 			// Sending Data From Buffer to Server
 			while (read(sockfd_new, &BUFFER_USED, sizeof(int)) == -1)
 				fprintfIO(NULL, "[-server] Error While Sending!\n", 1, 0); 
+			fprintf(stdout, "[+server] Negotiated Buffer Size is: %lu.\n", BUFFER_USED); 
 
 			// Create BUFFER
 			bufferPtr = (char*) calloc (BUFFER_USED, sizeof(char));
@@ -208,7 +219,7 @@ int main (int argc, char* argv[])
 		}
 	
 		// Session Summary
-		fprintf(stdout, "[+server] Session %lu Summary:\nACK Memory is: %lu\nRemaining Memory is: %d\n", 
+		fprintf(stdout, "[+server] Session %lu Summary:\nACK Memory is: %lu\nRemaining Memory is: %d\n\n", 
                                                 OveralIteration, fileMemory_ACK, remainMem);		
 	
 	}
