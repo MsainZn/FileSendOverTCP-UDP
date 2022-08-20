@@ -11,6 +11,7 @@
 #include <netdb.h>      //:: definitions of (struct hostnet) to store info of a given host & IPV-4
 #include <arpa/inet.h>  //:: inet()
 #include <sys/stat.h>
+#include <stdarg.h>     //:: Variable Input function
 
 // Usefull functions
 
@@ -33,6 +34,22 @@ void fprintfIO(const char* logFileName, const char* mssg, int printConsoleFlag, 
         exit(1);
 }
 
+
+void fprintfSwitchable(FILE* stream, int errFlag, const char* mssg, ...)
+{
+    va_list args;
+
+    va_start(args, mssg);
+
+    if (stream == NULL)
+        vfprintf(stdout, mssg, args);
+    else
+        vfprintf(stream, mssg, args);
+
+    if (errFlag)  exit(1);
+        
+    va_end(args);
+}
 
 
 /*

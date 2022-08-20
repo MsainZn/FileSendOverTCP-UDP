@@ -14,9 +14,7 @@ int main (int argc, char* argv[])
 {
 	// Input Parameters Error Check
 	if (argc < 5) 
-	{	fprintf(stderr, "Please use the following format to initiate the server: ./server PORT_NUMBER\n");
-		exit(0);
-	}
+		fprintfSwitchable(NULL, 1, "[+server] Please use the following format to initiate the ./server FILENAME PORT_NUMBER SLEEP_TIMER MAX_BUFFER_SIZER\n");
 
 	// Initial confirmation client side
 	char checkSend;
@@ -39,11 +37,11 @@ int main (int argc, char* argv[])
 	FILE* filePtr_ACK = fopen(fileLocFull, "r");
 	if (filePtr_ACK == NULL) 
 		{
-			fprintfIO (NULL,"[-server] Not Such File Name Exists To Send!\n", 1, 0);
+			fprintfSwitchable(NULL, 0, "[-server] Not Such File Name Exists To Send!\n");
 			filePtr_ACK = fopen(fileLocFull, "w");
 		}
 	else
-		fprintfIO(NULL, "[+server] File Selected For Sending Successfully Found.\n", 1, 0);
+	fprintfSwitchable(NULL, 0, "[+server] File Selected For Sending Successfully Found.\n");
 	fclose(filePtr_ACK);
 
 	int fileDes_ACK;
@@ -56,9 +54,9 @@ int main (int argc, char* argv[])
 	// client :: Initiation Socket via TCP Protocol & Error Check
 	sockfd = socket(AF_INET, SOCK_STREAM, 0);
 	if (sockfd == -1)
-		fprintfIO(NULL, "[-server] Error in Socket Initiation!\n", 1, 1);
+		fprintfSwitchable(NULL, 1, "[-server] Error in Socket Initiation!\n");
 	else
-		fprintfIO(NULL, "[+server] Socket Successfully Initiated.\n", 1, 0);
+		fprintfSwitchable(NULL, 0, "[+server] Socket Successfully Initiated.\n");
 
 	// Socket main Structures
 	struct sockaddr_in* serverAddr;
@@ -68,9 +66,9 @@ int main (int argc, char* argv[])
 	
 	// Socket Structures Memory Allocation Test
 	if (clientAddr == NULL || serverAddr == NULL)
-		fprintfIO(NULL, "[-server] Memory Allocation for sockadd_in strctures Failed!\n", 1, 1);
+		fprintfSwitchable(NULL, 1, "[-server] Memory Allocation for sockadd_in strctures Failed!\n");
 	else
-		fprintfIO(NULL, "[+server] Memory Allocation Successfully Completed.\n", 1, 0);
+		fprintfSwitchable(NULL, 0, "[+server] Memory Allocation Successfully Completed.\n");
 	
 	bzero(serverAddr, sizeof(struct sockaddr_in)); //memset(serverAddr, 0x00, sizeof(struct sockaddr_in));
 	bzero(clientAddr, sizeof(struct sockaddr_in)); //memset(clientAddr, 0x00, sizeof(struct sockaddr_in));
@@ -82,36 +80,34 @@ int main (int argc, char* argv[])
 
 	// server :: Socket Binding
 	if (bind(sockfd, (struct sockaddr*) serverAddr, sizeof(struct sockaddr_in)) == -1)
-		fprintfIO(NULL, "[-server] Error in Socket Binding!\n", 1, 1);
+		fprintfSwitchable(NULL, 1, "[-server] Error in Socket Binding!\n");
 	else
-		fprintfIO(NULL, "[+server] Socket Successfully Binded.\n", 1, 0);
+		fprintfSwitchable(NULL, 0, "[+server] Socket Successfully Binded.\n");
 	
 	// server :: Socket Listening
 	if (listen(sockfd, WaitQueue) == -1)
-		fprintfIO(NULL, "[-server] Error while Listening!\n", 1, 1);
+		fprintfSwitchable(NULL, 1, "[-server] Error while Listening!\n");
 	else
-		fprintfIO(NULL, "[+server] Listening...\n", 1, 0);
+		fprintfSwitchable(NULL, 0, "[+server] Listening...\n");
 	
 	// server :: Socket Listening
 	sockfd_new = accept(sockfd, (struct sockaddr*) clientAddr, &socklen);
 	if (sockfd_new == -1)
-		fprintfIO(NULL, "[-server] Error in Accepting Client Connection!\n", 1, 1);
+		fprintfSwitchable(NULL, 1, "[-server] Error in Accepting Client Connection!\n");
 	else
-		fprintfIO(NULL, "[+server] Connection Successfully Accepted.\n", 1, 0);
+		fprintfSwitchable(NULL, 0, "[+server] Connection Successfully Accepted.\n");
 
 	// Establishing BUFFER_MAX_SIZE (Set Sender/Client Buffer-Size Equal to Server)
 	if (write(sockfd_new, &BUFFER_MAX, sizeof(size_t)) == -1)
-		fprintfIO(NULL, "[-server] Error in Buffer Size Negitiation!\n", 1, 1); 
+		fprintfSwitchable(NULL, 1, "[-server] Error in Buffer Size Negitiation!\n");
 	else 
-		fprintfIO(NULL, "[+server] Buffer-Size is Sent to client.\n", 1, 0);
+		fprintfSwitchable(NULL, 0, "[+server] MAX Buffer-Size is Sent to client: %lu.\n", BUFFER_MAX);
 	
 	// Initializing Sender Sleep Clock (Set Sender/Client Buffer-Size Equal to Server)
 	if (write(sockfd_new, &sleepTimer, sizeof(size_t)) == -1)
-		fprintfIO(NULL, "[-server] Error in Sleep Timer Negitiation!\n", 1, 1); 
+		fprintfSwitchable(NULL, 1, "[-server] Error in Sleep Timer Negitiation!\n");
 	else 
-		fprintfIO(NULL, "[+server] Sleep-Timer is Sent to client\n", 1, 0); 
-
-	fprintf(stdout, "Sleep Timer: %lu\t Buffer Size: %lu\n", sleepTimer, BUFFER_MAX);
+		fprintfSwitchable(NULL, 0, "[+server] Sleep-Timer is Sent to client: %lu\n", sleepTimer);
 
 	// Server Buffer
 	char* bufferPtr;
@@ -126,7 +122,8 @@ int main (int argc, char* argv[])
 	int ACKFLAG = 0;
 	unsigned sendRecvCounts;
 	unsigned long OveralIteration = 0;
-	fprintfIO(NULL, "**********************Server-Side::Recieving Started**************************\n", 1, 0);
+	
+	fprintfSwitchable(NULL, 0, "**********************Server-Side::Recieving Started**************************\n");
 	while (1)
 	{
 		// Exit Condition
@@ -139,19 +136,19 @@ int main (int argc, char* argv[])
         else if (sFlag == 0) 
         {
             fflush(stdout);
-            printf("-\n");
+            fprintfSwitchable(NULL, 0, "-\n");
         }
         else
         {
             fgets(exitFlag, 12, stdin);
-            fprintfIO(NULL, "[+server] To Quit, please enter \"EXIT\": ", 1, 0); 
+            fprintfSwitchable(NULL, 0, "[+server] To Quit, please enter \"EXIT\": "); 
             fflush(stdout);
             if ( memcmp(exitFlag, "EXIT", 4) == 0 ) break;
         }
 
 		// Sending Session Started
 		OveralIteration++;
-		fprintf(stdout, "[+server] Session %lu Started:\n", OveralIteration);
+		fprintfSwitchable(NULL, 0, "[+server] Session %lu Started:\n", OveralIteration);
 		// File Status @ Server (Reciever) 
         filePtr_ACK = fopen(fileLocFull, "r");
         fileDes_ACK = fileno(filePtr_ACK);
@@ -161,23 +158,23 @@ int main (int argc, char* argv[])
 		
 		// Send ACK Status
         if (write(sockfd_new, &fileInfo_ACK, sizeof(struct stat)) == -1)
-			fprintfIO(NULL, "[-server] Error in Sending File Info!\n", 1, 1); 
-		fprintfIO(NULL, "[+server] File Info (size) Sent Successfully\n", 1, 0); 
+			fprintfSwitchable(NULL, 1, "[-server] Error in Sending File Info!\n");
+		fprintfSwitchable(NULL, 0, "[+server] File Info (size) Sent Successfully: %lu\n", fileMemory_ACK); 
 
 		// Recieve Expecting Data Size From Client
 		if (read(sockfd_new, &remainMem, sizeof(int)) == -1)
-			fprintfIO(NULL, "[-server] Failed To send Remaining Memory Info!\n", 1, 1); 
-		fprintfIO(NULL, "[+server] Remained Size is Recieved Successfully.\n", 1, 0); 
+			fprintfSwitchable(NULL, 1, "[-server] Failed To send Remaining Memory Info!\n"); 
+		fprintfSwitchable(NULL, 0, "[+server] Remained Size is Recieved Successfully: %d.\n", remainMem); 
 
 		// Session Overview
-		fprintf(stdout, "[+server] Total ACK Memory: %lu :: Total Remained Memory is: %d\n", fileMemory_ACK, remainMem);
+		fprintfSwitchable(NULL, 0, "[+server] Total ACK Memory: %lu :: Total Remained Memory is: %d\n", fileMemory_ACK, remainMem);
 
 		// Check The Remaining Size Before Going Further
 		if      (remainMem < 0)
-			fprintfIO(NULL, "[-server] Remain Bytes Cannot be Below Zero!!!\n", 1, 1); 
+			fprintfSwitchable(NULL, 1, "[-server] Remain Bytes Cannot be Below Zero!!!\n"); 
         else if (remainMem == 0) 
 		{
-			fprintfIO(NULL, "[+server] Remaining Memory is Zero. Process Will Contine After A Short Timeout\n", 1, 0); 
+			fprintfSwitchable(NULL, 0, "[+server] Remaining Memory is Zero. Process Will Contine After %lu[s] Timeout.\n", sleepTimer); 
 			continue;
 		}
 
@@ -186,8 +183,8 @@ int main (int argc, char* argv[])
 		{
 			// Sending Data From Buffer to Server
 			while (read(sockfd_new, &BUFFER_USED, sizeof(int)) == -1)
-				fprintfIO(NULL, "[-server] Error While Sending!\n", 1, 0); 
-			fprintf(stdout, "[+server] Negotiated Buffer Size is: %lu.\n", BUFFER_USED); 
+				fprintfSwitchable(NULL, 0, "[-server] Error While Sending!\n"); 
+			fprintfSwitchable(NULL, 0, "[+server] Negotiated Buffer Size is: %lu.\n", BUFFER_USED); 
 
 			// Create BUFFER
 			bufferPtr = (char*) calloc (BUFFER_USED, sizeof(char));
@@ -197,7 +194,7 @@ int main (int argc, char* argv[])
 			while (read(sockfd_new, bufferPtr, BUFFER_USED) == -1)
 			{
 				bzero(bufferPtr, BUFFER_USED); 
-				fprintfIO(NULL, "[-server] Error While Sending!\n", 1, 0); 
+				fprintfSwitchable(NULL, 0, "[-server] Error While Sending!\n"); 
 			}
 				
 			// Copy Data From File to Buffer
@@ -208,22 +205,22 @@ int main (int argc, char* argv[])
 
 			// Recv ACK From Server
 			while (write(sockfd_new, &ACKFLAG, sizeof(int)) == -1)	
-				fprintfIO(NULL, "[-server] Error While Recieving ACK !\n", 1, 0); 
+				fprintfSwitchable(NULL, 0, "[-server] Error While Recieving ACK !\n"); 
 
 			// In Session Statistics
 			remainMem      -= BUFFER_USED;
 			fileMemory_ACK += BUFFER_USED;
-			fprintf(stdout, "[+server] Send Size: %lu :: Remaining Memory is: %d\n", BUFFER_USED, remainMem);
+			fprintfSwitchable(NULL, 0, "[+server] Send Size: %lu :: Remaining Memory is: %d\n", BUFFER_USED, remainMem);
 			free(bufferPtr);
 			ACKFLAG = 0;
 		}
 	
 		// Session Summary
-		fprintf(stdout, "[+server] Session %lu Summary:\nACK Memory is: %lu\nRemaining Memory is: %d\n\n", 
+		fprintfSwitchable(NULL, 0, "[+server] Session %lu Summary:\nACK Memory is: %lu\nRemaining Memory is: %d\n\n", 
                                                 OveralIteration, fileMemory_ACK, remainMem);		
 	
 	}
-	fprintfIO(NULL, "***********************Server-Side::Recieving Ended***************************\n", 1, 0);
+	fprintfSwitchable(NULL, 0, "***********************Server-Side::Recieving Ended***************************\n");
 	
 	close(sockfd);
 	close(sockfd_new);
