@@ -36,19 +36,26 @@ int main (int argc, char* argv[])
 	// File Process, Data Structure (NACK is the Sender/Client Side)
 	FILE* filePtr_ACK = fopen(fileLocFull, "r");
 	if (filePtr_ACK == NULL) 
-		{
-			fprintfSwitchable(NULL, 0, "[-server] Not Such File Name Exists To Send!\n");
-			filePtr_ACK = fopen(fileLocFull, "w");
-		}
+	{
+		fprintfSwitchable(NULL, 0, "[-server] Not Such File Name Exists To Send!\n");
+		filePtr_ACK = fopen(fileLocFull, "w");
+		fclose(filePtr_ACK);
+	}
 	else
-	fprintfSwitchable(NULL, 0, "[+server] File Selected For Sending Successfully Found.\n");
-	fclose(filePtr_ACK);
+	{
+		fprintfSwitchable(NULL, 0, "[+server] File Selected For Sending Found Successfully.\n");
+		fclose(filePtr_ACK);
+	}
 
+	size_t checker = FileCorrector (fileLocFull);
+
+	// Memory and Size Assessment
 	int fileDes_ACK = 0;
     size_t fileMemory_ACK = 0;
     struct stat fileInfo_ACK;
 	bzero(&fileInfo_ACK, sizeof(struct stat));
 	size_t remainMem = 0;
+	
 	// socket End-Point
 	int sockfd, sockfd_new;
 	// client :: Initiation Socket via TCP Protocol & Error Check
@@ -119,7 +126,7 @@ int main (int argc, char* argv[])
     char* exitFlag = (char*) calloc(12, sizeof(char));
     int sFlag;
 
-	int ACKFLAG = 0;
+	int ACKFLAG = 0, CONFLAG = 0;
 	unsigned sendRecvCounts;
 	unsigned long OveralIteration = 0;
 	
@@ -227,6 +234,7 @@ int main (int argc, char* argv[])
                                                 fileMemory_ACK, BUFFER_USED, remainMem);		
 			free(bufferPtr);
 			ACKFLAG = 0;
+			CONFLAG = 0;
 		}
 	
 		// Session Summary

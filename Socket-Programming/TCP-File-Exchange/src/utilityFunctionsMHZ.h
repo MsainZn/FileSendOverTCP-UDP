@@ -14,6 +14,12 @@
 #include <stdarg.h>     //:: Variable Input function
 
 // Usefull functions
+void WriteLog(const char* logFileName, const char* mssg);
+size_t FileCorrector (const char* fileName);;
+void fprintfIO(const char* logFileName, const char* mssg, int printConsoleFlag, int errFlag);
+FILE* FileOpenSafe (const char* fileName, const char* rwaMode);
+size_t FileSizeCalculator (const char* fileName);
+
 
 void WriteLog(const char* logFileName, const char* mssg)
 {
@@ -21,6 +27,7 @@ void WriteLog(const char* logFileName, const char* mssg)
     //fputs(mssg, logFilePtr);
     fclose(logFilePtr);
 }
+
 
 void fprintfIO(const char* logFileName, const char* mssg, int printConsoleFlag, int errFlag)
 {
@@ -50,6 +57,88 @@ void fprintfSwitchable(FILE* stream, int errFlag, const char* mssg, ...)
         
     va_end(args);
 }
+
+
+FILE* FileOpenSafe (const char* fileName, const char* rwaMode)
+{
+    if (fileName == NULL)
+        fprintfSwitchable(NULL, -1, "FileName or Location is Incorrect!\n");
+
+    FILE* filePtr = fopen(fileName, rwaMode);
+
+    if (filePtr == NULL)
+        fprintfSwitchable(NULL, -1, "File Location is Invalid Or File Does Not Exists!\n");
+
+    return filePtr;
+}
+
+
+size_t FileSizeCalculator (const char* fileName)
+{
+    FILE* filePtr = FileOpenSafe(fileName, "r");
+    int fileDescriptor = fileno(filePtr);
+    struct stat fileInfo;
+    bzero(&fileInfo, sizeof(struct stat));
+    fstat(fileDescriptor, &fileInfo);
+    size_t fileSize =  fileInfo.st_size;
+    fclose(filePtr);
+
+    return fileSize;
+}
+
+
+size_t FileCorrector (const char* fileName)
+{
+    size_t fileSize = FileSizeCalculator (fileName);
+    size_t fileSizeTrue;
+    if (fileSize == 0)
+    {
+        fprintfSwitchable(NULL, 0, "File is Empty, thus requires no correction!\n");
+        return 0;
+    }
+        
+    // Main & Temp File
+    FILE* mainFile = FileOpenSafe (fileName, "r");
+    FILE* tempFile = FileOpenSafe("temp", "w");
+    
+    // Fault Detection (\00 0\0 00) and correct
+    char checkBuff[3];
+    char curserrChar;
+    
+    size_t ii;
+    for (ii = 0; ii < fileSize; ii++)
+    {
+        curserrChar = fgetc(mainFile);
+        //printf("%c", curserrChar);
+        if (curserrChar == '\00')
+        {    
+            fileSizeTrue = ftell(mainFile)-2;
+            break;
+        }
+        fputc(curserrChar, tempFile);
+    }
+    fclose(mainFile);
+    fclose(tempFile);
+
+    // Remove The Old File
+    if (remove(fileName) == 0) 
+        fprintfSwitchable(NULL, 0, "Faulty File (%s) Removed Successfully.\n", fileName);
+    else
+        fprintfSwitchable(NULL, 1, "Error while Removing the Faulty File: %s!\n", fileName);
+
+
+    // Remove The Old File
+    if (rename("temp", fileName) == 0) 
+        fprintfSwitchable(NULL, 0, "Corrected File Renamed Successfully.\n");
+    else
+        fprintfSwitchable(NULL, 1, "Error while Removing the Faulty File: %s!\n");
+
+    fprintfSwitchable(NULL, 0, "Correction Implemented Successfully.\n");
+
+    return fileSizeTrue;
+}
+
+
 
 
 /*
