@@ -1,5 +1,5 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
+make: *** No rule to make target 'client.c', needed by 'sender'.  Stop.
 
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 20 17:45:12 2022
+# Make data base, printed on Sun Aug 21 16:41:56 2022
 
 # Variables
 
@@ -46,12 +46,14 @@ GDM_LANG = en_US
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
+# makefile (from 'Makefile', line 2)
+CFLAGS = -Wall -g
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon2d:/etc/xdg
 # environment
 GTK_OVERLAY_SCROLLING = 1
-# makefile
-MAKEFILE_LIST := 
+# makefile (from 'Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
 # automatic
 @F = $(notdir $@)
 # environment
@@ -152,6 +154,8 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
+# makefile (from 'Makefile', line 1)
+CC = gcc
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -159,7 +163,7 @@ USER = msain1995
 # environment
 LC_MONETARY = en_US.UTF-8
 # makefile
-.DEFAULT_GOAL := 
+.DEFAULT_GOAL := all
 # environment
 XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -235,7 +239,7 @@ LANG = C
 # environment
 VSCODE_PID = 2196
 # variable set hash-table stats:
-# Load=111/1024=11%, Rehash=0, Collisions=12/133=9%
+# Load=113/1024=11%, Rehash=0, Collisions=12/138=9%
 
 # Pattern-specific Variable Values
 
@@ -243,9 +247,9 @@ VSCODE_PID = 2196
 
 # Directories
 
-# . (device 66307, inode 8394102): 9 files, no impossibilities.
+# . (device 66307, inode 8394102): 10 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -253,8 +257,7 @@ VSCODE_PID = 2196
 
 # Files
 
-# Not a target:
-all:
+all: sender reciever
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -263,16 +266,22 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  File does not exist.
+#  Last modified 2022-08-21 16:40:29.386333113
 #  File has been updated.
-#  Failed to be updated.
+#  Successfully updated.
 
 # Not a target:
-makefile:
+utilityFunctionsMHZ.h:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+client.c:
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
+#  File has not been updated.
+ 
 
 # Not a target:
 .DEFAULT:
@@ -280,28 +289,54 @@ makefile:
 #  Modification time never checked.
 #  File has not been updated.
 
+reciever.o: server.c utilityFunctionsMHZ.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 10):
+	$(CC) $(CFLAGS) -c server.c
+
+reciever: server.c reciever.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 13):
+	$(CC) $(CFLAGS) -o $@ $^
+
 # Not a target:
- 
-GNUmakefile:
-#  Implicit rule search has been done.
+server.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+sender.o: client.c utilityFunctionsMHZ.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 7):
+	$(CC) $(CFLAGS) -c client.c
+
+sender: client.c sender.o
+#  Implicit rule search has not been done.
 #  File does not exist.
-#  File has been updated.
-#  Failed to be updated.
+#  File has not been updated.
+#  recipe to execute (from 'Makefile', line 16):
+	$(CC) $(CFLAGS) -o $@ $^
 
 # files hash-table stats:
-# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# Load=11/1024=1%, Rehash=0, Collisions=1/34=3%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 17 / storage = 165 B / avg = 9 B
-# current buf: size = 8162 B / used = 165 B / count = 17 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 22 / storage = 191 B / avg = 8 B
+# current buf: size = 8162 B / used = 191 B / count = 22 / avg = 8 B
 
-# strcache performance: lookups = 20 / hit rate = 15%
+# strcache performance: lookups = 39 / hit rate = 43%
 # hash-table stats:
-# Load=17/8192=0%, Rehash=0, Collisions=1/20=5%
-# Finished Make data base on Sat Aug 20 17:45:12 2022
+# Load=22/8192=0%, Rehash=0, Collisions=1/39=3%
+# Finished Make data base on Sun Aug 21 16:41:56 2022
 
  
