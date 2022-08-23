@@ -47,7 +47,8 @@ int main (int argc, char* argv[])
 		fclose(filePtr_ACK);
 	}
 
-	size_t checker = FileCorrector (fileLocFull);
+	//size_t checker = FileCorrector (fileLocFull);
+	size_t checker = FileModifier (fileLocFull);
 
 	// Memory and Size Assessment
 	int fileDes_ACK = 0;
@@ -209,8 +210,8 @@ int main (int argc, char* argv[])
 			// Sending Data From Buffer to Server
 			if (read(sockfd_new, bufferPtr, BUFFER_USED) == -1)
 				fprintfSwitchable(NULL, 1, "[-server] Error While Sending!\n"); 
-
-			fprintfSwitchable(NULL, 0, "[+server] Buffer Recieved Successfully.\n"); 
+			else
+				fprintfSwitchable(NULL, 0, "[+server] Buffer Recieved Successfully.\n"); 
 			
 			// Copy Data From File to Buffer
 			filePtr_ACK = fopen(fileLocFull, "a");

@@ -1,6 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/msain1995/Desktop/Socket-Programming/Simple TCP Data Exchange'
-make: Leaving directory '/home/msain1995/Desktop/Socket-Programming/Simple TCP Data Exchange'
- 
-make: *** No targets specified and no makefile found.  Stop.
-

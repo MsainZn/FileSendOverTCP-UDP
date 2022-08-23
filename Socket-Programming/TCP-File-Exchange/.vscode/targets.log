@@ -8,7 +8,7 @@ make: *** No rule to make target 'client.c', needed by 'sender'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 22 12:20:18 2022
+# Make data base, printed on Tue Aug 23 09:14:57 2022
 
 # Variables
 
@@ -83,7 +83,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-SESSION_MANAGER = local/msain1995-P310-D3:@/tmp/.ICE-unix/1616,unix/msain1995-P310-D3:/tmp/.ICE-unix/1616
+SESSION_MANAGER = local/msain1995-P310-D3:@/tmp/.ICE-unix/1728,unix/msain1995-P310-D3:/tmp/.ICE-unix/1728
 # environment
 CINNAMON_SOFTWARE_RENDERING = 1
 # environment
@@ -101,7 +101,7 @@ XDG_SESSION_DESKTOP = cinnamon2d
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 232022
+GIO_LAUNCHED_DESKTOP_FILE_PID = 2640
 # environment
 MUFFIN_NO_SHADOWS = 1
 # automatic
@@ -117,7 +117,7 @@ QT_QPA_PLATFORMTHEME = qt5ct
 # environment
 XDG_SEAT = seat0
 # environment
-SSH_AGENT_PID = 1685
+SSH_AGENT_PID = 1797
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -235,7 +235,7 @@ CLUTTER_PAINT = disable-culling
 # environment
 LANG = C
 # environment
-VSCODE_PID = 232022
+VSCODE_PID = 2640
 # variable set hash-table stats:
 # Load=112/1024=11%, Rehash=0, Collisions=12/137=9%
 
@@ -335,6 +335,6 @@ sender: client.c sender.o
 # strcache performance: lookups = 36 / hit rate = 47%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=1/36=3%
-# Finished Make data base on Mon Aug 22 12:20:18 2022
+# Finished Make data base on Tue Aug 23 09:14:57 2022
 
  

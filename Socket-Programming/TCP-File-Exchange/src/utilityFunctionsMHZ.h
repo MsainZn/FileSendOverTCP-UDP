@@ -139,7 +139,58 @@ size_t FileCorrector (const char* fileName)
 }
 
 
+size_t FileModifier(const char* fileName)
+{
+    size_t fileSize = FileSizeCalculator (fileName);
+    size_t fileSizeTrue;
+    if (fileSize == 0)
+    {
+        fprintfSwitchable(NULL, 0, "[+server] File is Empty, thus requires no correction.\n");
+        return 0;
+    }
+        
+    // Main & Temp File
+    FILE* mainFile = FileOpenSafe (fileName, "r");
+    FILE* tempFile = FileOpenSafe("temp", "w");
+    
+    // Fault Detection (\00 0\0 00) and correct
+    char checkBuff[3];
+    char curserrChar;
+    size_t ii;
+    for (ii = 0; ii < fileSize; ii++)
+    {
+        curserrChar = fgetc(mainFile);
+        if (curserrChar == '\00') break;
+        fputc(curserrChar, tempFile);
+    }
+    fclose(mainFile);
+    fclose(tempFile);
 
+
+    mainFile = FileOpenSafe (fileName, "w");
+    tempFile = FileOpenSafe("temp", "r");
+    fileSizeTrue = FileSizeCalculator ("temp");
+
+    ii=0;
+    for (ii = 0; ii < fileSizeTrue; ii++)
+    {
+        curserrChar = fgetc(tempFile);
+        fputc(curserrChar, mainFile);
+    }
+    
+    fclose(mainFile);
+    fclose(tempFile);
+
+    // Remove The Old File
+    if (remove("temp") == 0) 
+        fprintfSwitchable(NULL, 0, "[+server] Temp File Removed Successfully.\n");
+    else
+        fprintfSwitchable(NULL, 1, "[-server] Error while Removing the Faulty File!\n");
+
+    fprintfSwitchable(NULL, 0, "[+server] File Modifier Executed Successfully.\n");
+
+    return fileSizeTrue;
+}
 
 /*
 void ExitCondition (unsigned timerSec, const char* exitKeyword)
