@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Aug 24 08:43:49 2022
+# Make data base, printed on Wed Aug 24 08:44:12 2022
 
 # Variables
 
@@ -35,7 +37,7 @@ GDMSESSION = cinnamon2d
 # default
 MAKE_VERSION := 4.2.1
 # makefile
-CURDIR := /home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Exchange
+CURDIR := /home/msain1995/Desktop/FileSendOverTCP-UDP
 # makefile
 SHELL = /bin/sh
 # environment
@@ -44,14 +46,12 @@ GDM_LANG = en_US
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
 _ = /usr/share/code/code
-# makefile (from 'Makefile', line 2)
-CFLAGS = -Wall -g
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-cinnamon2d:/etc/xdg
 # environment
 GTK_OVERLAY_SCROLLING = 1
-# makefile (from 'Makefile', line 1)
-MAKEFILE_LIST :=  Makefile
+# makefile
+MAKEFILE_LIST := 
 # automatic
 @F = $(notdir $@)
 # environment
@@ -107,7 +107,7 @@ MUFFIN_NO_SHADOWS = 1
 # environment
 DISPLAY = :0
 # environment
-PWD = /home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Exchange
+PWD = /home/msain1995/Desktop/FileSendOverTCP-UDP
 # environment
 QT_QPA_PLATFORMTHEME = qt5ct
 # default
@@ -152,8 +152,6 @@ MAKE = $(MAKE_COMMAND)
 MAKECMDGOALS := all
 # environment
 SHLVL = 1
-# makefile (from 'Makefile', line 1)
-CC = gcc
 # environment
 XDG_SESSION_ID = c2
 # environment
@@ -161,7 +159,7 @@ USER = msain1995
 # environment
 LC_MONETARY = en_US.UTF-8
 # makefile
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := 
 # environment
 XDG_CURRENT_DESKTOP = X-Cinnamon
 # environment
@@ -235,7 +233,7 @@ LANG = C
 # environment
 VSCODE_PID = 3411
 # variable set hash-table stats:
-# Load=112/1024=11%, Rehash=0, Collisions=12/137=9%
+# Load=110/1024=11%, Rehash=0, Collisions=12/132=9%
 
 # Pattern-specific Variable Values
 
@@ -243,9 +241,9 @@ VSCODE_PID = 3411
 
 # Directories
 
-# . (device 66307, inode 3164239): 7 files, no impossibilities.
+# . (device 66307, inode 3164043): 6 files, no impossibilities.
 
-# 7 files, no impossibilities in 1 directories.
+# 6 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -253,7 +251,8 @@ VSCODE_PID = 3411
 
 # Files
 
-all: sender reciever
+# Not a target:
+all:
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
@@ -262,21 +261,16 @@ all: sender reciever
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-24 08:29:30.665785996
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Failed to be updated.
 
 # Not a target:
-utilityFunctionsMHZ.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-client.c:
+makefile:
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Failed to be updated.
 
 # Not a target:
 .DEFAULT:
@@ -284,57 +278,28 @@ client.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-reciever.o: server.c utilityFunctionsMHZ.h
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 10):
-	$(CC) $(CFLAGS) -c server.c
-
-reciever: server.c reciever.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 13):
-	$(CC) $(CFLAGS) -o $@ $^
-
 # Not a target:
-server.c:
+GNUmakefile:
+#  Implicit rule search has been done.
  
-make: *** No rule to make target 'client.c', needed by 'sender'.  Stop.
-
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-sender.o: client.c utilityFunctionsMHZ.h
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 7):
-	$(CC) $(CFLAGS) -c client.c
-
-sender: client.c sender.o
-#  Implicit rule search has not been done.
 #  File does not exist.
-#  File has not been updated.
-#  recipe to execute (from 'Makefile', line 16):
-	$(CC) $(CFLAGS) -o $@ $^
+#  File has been updated.
+#  Failed to be updated.
 
 # files hash-table stats:
-# Load=11/1024=1%, Rehash=0, Collisions=1/34=3%
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 19 / storage = 171 B / avg = 9 B
-# current buf: size = 8162 B / used = 171 B / count = 19 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 14 / storage = 132 B / avg = 9 B
+# current buf: size = 8162 B / used = 132 B / count = 14 / avg = 9 B
 
-# strcache performance: lookups = 36 / hit rate = 47%
+# strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
-# Load=19/8192=0%, Rehash=0, Collisions=1/36=3%
-# Finished Make data base on Wed Aug 24 08:43:49 2022
+# Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
+# Finished Make data base on Wed Aug 24 08:44:12 2022
 
  

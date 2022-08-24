@@ -177,10 +177,6 @@ int main (int argc, char* argv[])
 		// Session Overview
 		fprintfSwitchable(NULL, 0, "[+server] Session [%lu] Overview:\nACK Memory is: %lu\nRemaining Memory is: %lu\n\n", 
                                                 OveralIteration, fileMemory_ACK, remainMem); 
-
-		// Check The Remaining Size Before Going Further
-		//if      (remainMem < 0)
-			//fprintfSwitchable(NULL, 1, "[-server] Remain Bytes Cannot be Below Zero!!!\n"); 
         if (remainMem == 0) 
 		{
 			fprintfSwitchable(NULL, 0, "[+server] Remaining Memory is Zero. Process Will Contine After %lu[s] Timeout.\n", sleepTimer); 
