@@ -1,8 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Exchange'
-make: Leaving directory '/home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Exchange'
- 
-make: *** No rule to make target 'client.c', needed by 'sender'.
-make: *** No rule to make target 'utilityFunctionsMHZ.h', needed by 'sender.o'.
-make: *** No rule to make target 'server.c', needed by 'reciever'.
-
