@@ -13,7 +13,18 @@
 #include <sys/stat.h>
 #include <stdarg.h>     //:: Variable Input function
 
+
+
+struct bufferTCP
+{
+    size_t BUFFER_MAX;
+    size_t BUFFER_USED;
+	char mssgPtr[BUFFER_MAX];
+};
+
+
 // Usefull functions
+struct buffer*
 void WriteLog(const char* logFileName, const char* mssg);
 size_t FileCorrector (const char* fileName);;
 FILE* FileOpenSafe (const char* fileName, const char* rwaMode);

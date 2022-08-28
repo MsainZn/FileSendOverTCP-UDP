@@ -86,6 +86,7 @@ int main (int argc, char* argv[])
 	else 
 		fprintfSwitchable(NULL, 0, "[+client] Sleep Timer is Set Equal to Server: %lu\n", sleepTimer); 
 
+	int iack;
 	int ACKFLAG = 0;
 	size_t OveralIteration = 0;
 	size_t SentBytes;
@@ -145,16 +146,15 @@ int main (int argc, char* argv[])
 		// Main Send-ACK LOOP
 		while (1)
 		{
+			ACKFLAG = 0;
 			SentBytes = 0;
 			fileRemainMemory = CACHE_SIZE;
 			while (1)
 			{
+				iack = 0;
 				// EXIT CONDITION (Evaluate Buffer Size)
 				if (fileRemainMemory == 0) 
-				{
-					ACKFLAG = 1;
 					break;
-				}
 				else if (fileRemainMemory < BUFFER_MAX) 
 					BUFFER_USED = fileRemainMemory;
 				else					
@@ -179,9 +179,16 @@ int main (int argc, char* argv[])
 						fileRemainMemory -= BUFFER_USED;
 						SentBytes		 += BUFFER_USED;
 						//fprintfSwitchable(NULL, 0, "[+client] Sent Bytes is %lu :: Remaining Memory is: %lu\n", SentBytes, fileRemainMemory);	 
-					}
-				}			
+
+						if (read(sockfd, &iack, sizeof(int)) == -1)	
+							fprintfSwitchable(NULL, 1, "[-client] Error While Recieving IACK!\n");
+						//else
+							//fprintfSwitchable(NULL, 0, "[+client] IACK Recieved.\n");
+					}			
+			
+				}
 			}
+
 			// EXIT CONDITION (Successful Sent)
 			if (read(sockfd, &ACKFLAG, sizeof(int)) == -1)	
 				fprintfSwitchable(NULL, 1, "[-client] Error While Recieving ACK!\n");
@@ -193,6 +200,8 @@ int main (int argc, char* argv[])
 				fileMemory_ACK += SentBytes;
 				break;
 			} 
+			else
+				continue;
 		}		
 		// Session Summary
 		fprintfSwitchable(NULL, 0, "[+client] Session %lu Summary:\nACK Memory is %lu :: Remaining Memory is: %lu\n\n", 

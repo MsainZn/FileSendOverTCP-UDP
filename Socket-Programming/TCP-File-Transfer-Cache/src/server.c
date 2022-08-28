@@ -121,7 +121,7 @@ int main (int argc, char* argv[])
 	size_t OveralIteration = 0;
 	size_t SentBytes;
 	size_t Not_Written;
-
+	int iack = 0;
 	fprintfSwitchable(NULL, 0, "**********************Server-Side::Recieving Started**************************\n");
 	while (1)
 	{
@@ -169,9 +169,9 @@ int main (int argc, char* argv[])
 			ACKFLAG = 0;
 			SentBytes = 0;
 			fileRemainMemory = CACHE_SIZE;
-
 			while (1)
 			{
+				iack = 0;
 				// EXIT CONDITION (Evaluate Buffer Size)
 				if (fileRemainMemory == 0) 
 				{
@@ -201,6 +201,12 @@ int main (int argc, char* argv[])
 						fileRemainMemory -= BUFFER_USED;
 						SentBytes 		 += BUFFER_USED;
 						//fprintfSwitchable(NULL, 0, "[+server] Sent Bytes is %lu :: Remaining Memory is: %lu\n", SentBytes, fileRemainMemory);
+						iack = 1;
+						// EXIT CONDITION (Successful Sent)
+						if (write(sockfd_new, &iack, sizeof(int)) == -1)	
+							fprintfSwitchable(NULL, 1, "[-server] Error While Recieving ACK!\n");
+						//else	
+							//fprintfSwitchable(NULL, 0, "[+server] ACK Sent.\n");
 					}
 				}	
 			}
@@ -216,7 +222,8 @@ int main (int argc, char* argv[])
 				fileMemory_ACK += SentBytes;
 				break;
 			} 
-
+			else
+				continue;
 		}		
 
 		// Copy Data From File to CACHE-Buffer
