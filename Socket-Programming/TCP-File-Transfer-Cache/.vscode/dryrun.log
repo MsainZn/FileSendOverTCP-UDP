@@ -2,7 +2,5 @@ make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Transfer-Cache'
 make: Leaving directory '/home/msain1995/Desktop/FileSendOverTCP-UDP/Socket-Programming/TCP-File-Transfer-Cache'
  
-make: *** No rule to make target 'client.c', needed by 'sender'.
-make: *** No rule to make target 'utilityFunctionsMHZ.h', needed by 'sender.o'.
-make: *** No rule to make target 'server.c', needed by 'reciever'.
+make: *** No targets specified and no makefile found.  Stop.
 

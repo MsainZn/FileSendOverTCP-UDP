@@ -2,7 +2,7 @@
 	How to compile ->
 	(1) make all
 		if no make was provided then gcc server.c utilityFunctionsMHZ.h -o server
-	(2) ./server FILENAME PORT_NUMBER SLEEP_TIMER MAX_BUFFER_SIZE
+	(2) ./server FILENAME PORT_NUMBER SLEEP_TIMER CHACHE_SIZE_MAX
 		Example: ./server mainFile2.log 5500 10 4096
 	(3) ./client FILENAME SERVER_ADDR PORT_NUMBER
 		Example: ./client mainFile.log 172.17.34.89 5500
@@ -49,10 +49,7 @@ int main (int argc, char* argv[])
 	size_t fileRemainMemory = 0;
 	
 	// Buffer Properties and Size (Set Sender/Client Buffer-Size Equal to Server)
-	size_t BUFFER_MAX, BUFFER_USED;
-	BUFFER_MAX = 1024;
-	char* bufferPtr = (char*) calloc(BUFFER_MAX, sizeof(char));
-
+	struct bufferTCP* mssg = CreateBufferTCP();
 	// Cache properties
 	size_t CACHE_SIZE;
 	char* cacheBuffer;
@@ -69,8 +66,8 @@ int main (int argc, char* argv[])
 	// Socket main Structures
 	struct sockaddr_in* serverAddr;
 	struct sockaddr_in* clientAddr;
-	serverAddr = (struct sockaddr_in*) malloc(sizeof(struct sockaddr_in));		
-	clientAddr = (struct sockaddr_in*) malloc(sizeof(struct sockaddr_in));
+	serverAddr =  malloc(sizeof(struct sockaddr_in));		
+	clientAddr =  malloc(sizeof(struct sockaddr_in));
 	
 	// Socket Structures Memory Allocation Test
 	if (clientAddr == NULL || serverAddr == NULL)
@@ -83,7 +80,7 @@ int main (int argc, char* argv[])
 	
 	// set-up Server parameters
 	serverAddr->sin_family      = AF_INET;
-    serverAddr->sin_addr.s_addr = INADDR_ANY;	// inet_addr(serverIP);
+    serverAddr->sin_addr.s_addr = INADDR_ANY;	// inet_addr(clientIP);
 	serverAddr->sin_port        = htons(portNumber);
 
 	// server :: Socket Binding
@@ -122,11 +119,13 @@ int main (int argc, char* argv[])
 	size_t SentBytes;
 	size_t Not_Written;
 	int iack = 0;
+	ssize_t readFLAG;
+	ssize_t writeFLAG;
+	size_t InnerIteration = 0;
+
 	fprintfSwitchable(NULL, 0, "**********************Server-Side::Recieving Started**************************\n");
 	while (1)
 	{
-		// Exit Condition
-		if (isEnd (sleepTimer, "server"))  break;
 		// File Status @ Server (Reciever) 
         fileMemory_ACK = FileSizeCalculator(fileLocFull);
 		
@@ -160,90 +159,73 @@ int main (int argc, char* argv[])
 
 		// Creating Cache
 		CACHE_SIZE = fileRemainMemory;
-		cacheBuffer = (char*) calloc (CACHE_SIZE, sizeof(char));
+		cacheBuffer = calloc (CACHE_SIZE, sizeof(char));
 		bzero(cacheBuffer, CACHE_SIZE);
 
-		// Main Send-ACK LOOP
+		ACKFLAG = 0;
+		SentBytes = 0;
+		fileRemainMemory = CACHE_SIZE;
+		InnerIteration = 0;
 		while (1)
 		{
-			ACKFLAG = 0;
-			SentBytes = 0;
-			fileRemainMemory = CACHE_SIZE;
-			while (1)
+			// EXIT CONDITION
+			if (fileRemainMemory == 0) break;
+
+			// Recieve Buffer
+			readFLAG = 0;
+			bzero(mssg->mssgPtr, BUFFER_MAX);
+			while ( (readFLAG = read(sockfd_new, (mssg->mssgPtr)+readFLAG, BUFFER_MAX-readFLAG)) != BUFFER_MAX )
 			{
-				iack = 0;
-				// EXIT CONDITION (Evaluate Buffer Size)
-				if (fileRemainMemory == 0) 
-				{
-					ACKFLAG = 1;
+				if (readFLAG == 0 ||  mssg->mssgPtr[readFLAG] == '\0')
 					break;
-				}
-				else if (fileRemainMemory < BUFFER_MAX) 
-					BUFFER_USED = fileRemainMemory;
-				else					
-					BUFFER_USED = BUFFER_MAX;      
-				
-				// Incoming Buffer Size
-				if (read(sockfd_new, &BUFFER_USED, sizeof(size_t)) == -1)
-					fprintfSwitchable(NULL, 1, "[-server] Error While Reading Buffer Size!\n"); 
-				else
-				{
-					//fprintfSwitchable(NULL, 0, "[+server] Buffer Size Successfully Negotiated.\n"); 
-					// Recieving Data From Buffer to Server
-					if (read(sockfd_new, bufferPtr, BUFFER_USED) == -1)
-						fprintfSwitchable(NULL, 1, "[-server] Error While Recieving Buffer!\n"); 
-					else
-					{
-						//fprintfSwitchable(NULL, 0, "[+server] Buffer Recieved Successfully.\n"); 
-						// Copy From CACHE to Socket Buffer
-						memcpy(cacheBuffer+SentBytes, bufferPtr, BUFFER_USED);
-						// In Session Statistics	
-						fileRemainMemory -= BUFFER_USED;
-						SentBytes 		 += BUFFER_USED;
-						//fprintfSwitchable(NULL, 0, "[+server] Sent Bytes is %lu :: Remaining Memory is: %lu\n", SentBytes, fileRemainMemory);
-						iack = 1;
-						// EXIT CONDITION (Successful Sent)
-						if (write(sockfd_new, &iack, sizeof(int)) == -1)	
-							fprintfSwitchable(NULL, 1, "[-server] Error While Recieving ACK!\n");
-						//else	
-							//fprintfSwitchable(NULL, 0, "[+server] ACK Sent.\n");
-					}
-				}	
 			}
 
-			// EXIT CONDITION (Successful Sent)
-			if (write(sockfd_new, &ACKFLAG, sizeof(int)) == -1)	
-				fprintfSwitchable(NULL, 1, "[-server] Error While Recieving ACK!\n");
-			else	
-				fprintfSwitchable(NULL, 0, "[+server] ACK Sent.\n");
+			mssg->BUFFER_USED = readFLAG;
 			
-			if (ACKFLAG)
+			// Cases:
+			if (readFLAG == 0) 
 			{
-				fileMemory_ACK += SentBytes;
-				break;
-			} 
+				fprintfSwitchable(NULL, 0, "[-server] Nothing to read\n"); 
+			}
+			else if (readFLAG == -1) 
+			{
+				// Display Problem
+				fprintfSwitchable(NULL, 0, "[-server] Error While Reading Buffer Size!\n"); 
+				fprintfSwitchable(NULL, 0, "[-server] %s\n", strerror(errno));
+			}
 			else
-				continue;
+			{
+				// Copy From CACHE to Socket Buffer
+				memcpy(cacheBuffer+SentBytes, mssg->mssgPtr, mssg->BUFFER_USED);
+				// In Session Statistics	
+				fileRemainMemory -= mssg->BUFFER_USED;
+				SentBytes		 += mssg->BUFFER_USED;
+			}	
+			fprintfSwitchable(NULL, 0, "[+server] (%lu) Current-Iteration | (%lu) Total-Sent | (%lu) Remaining.\n", readFLAG, SentBytes, fileRemainMemory);
+			bzero(mssg->mssgPtr, BUFFER_MAX); 
 		}		
-
-		// Copy Data From File to CACHE-Buffer
-		filePtr_ACK = fopen(fileLocFull, "a");
-        fwrite(cacheBuffer, sizeof(char), CACHE_SIZE, filePtr_ACK);
-		fclose(filePtr_ACK);
-
-		// Session Summary
-		fprintfSwitchable(NULL, 0, "[+client] Session %lu Summary:\nACK Memory is %lu :: Remaining Memory is: %lu\n", 
-                                                OveralIteration, fileMemory_ACK, fileRemainMemory);	
+		if (readFLAG != -1 && fileRemainMemory == 0)
+		{
+			fileMemory_ACK = SentBytes;
+			// Copy Data From File to CACHE-Buffer
+			filePtr_ACK = fopen(fileLocFull, "a");
+			fwrite(cacheBuffer, sizeof(char), CACHE_SIZE, filePtr_ACK);
+			fclose(filePtr_ACK);
+			OveralIteration++;
+		}
+		
+		// Session Summary-alIteration, fileMemory_ACK, fileRemainMemory);	
 		free(cacheBuffer);
-		OveralIteration++;
+		// Exit Condition
+		if (isEnd (sleepTimer, "server"))  break;
 	}
 	fprintfSwitchable(NULL, 0, "\n***********************Server-Side::Recieving Ended***************************\n");
 	
 	close(sockfd);
 	close(sockfd_new);
-	free(bufferPtr);
 	free(serverAddr);
 	free(clientAddr);
+	free(mssg);
 
 	return 0;
 }

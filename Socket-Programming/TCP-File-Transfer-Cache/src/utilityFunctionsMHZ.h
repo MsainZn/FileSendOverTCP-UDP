@@ -12,19 +12,17 @@
 #include <arpa/inet.h>  //:: inet()
 #include <sys/stat.h>
 #include <stdarg.h>     //:: Variable Input function
-
-
+#include <errno.h>
+#define BUFFER_MAX 1024
 
 struct bufferTCP
 {
-    size_t BUFFER_MAX;
-    size_t BUFFER_USED;
 	char mssgPtr[BUFFER_MAX];
+    size_t BUFFER_USED;
 };
 
-
 // Usefull functions
-struct buffer*
+struct bufferTCP* CreateBufferTCP();
 void WriteLog(const char* logFileName, const char* mssg);
 size_t FileCorrector (const char* fileName);;
 FILE* FileOpenSafe (const char* fileName, const char* rwaMode);
@@ -53,9 +51,15 @@ void fprintfSwitchable(FILE* stream, int errFlag, const char* mssg, ...)
     va_start(args, mssg);
 
     if (stream == NULL)
+    {
         vfprintf(stdout, mssg, args);
+        fflush(stdout);
+    }
     else
+    {
         vfprintf(stream, mssg, args);
+        fflush(stream);
+    }    
 
     if (errFlag)  exit(1);
         
@@ -278,6 +282,14 @@ void copyWithOffsetSource(char* dest, const char* src, size_t start, size_t leng
     size_t i = 0;
     for (i = 0; i < length; i++)
         dest[i] = src[i+start];
+}
+
+
+struct bufferTCP* CreateBufferTCP()
+{
+    struct bufferTCP* mssg = (struct bufferTCP*) 
+                malloc(sizeof(struct bufferTCP));
+    return mssg;
 }
 
 #endif
