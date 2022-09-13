@@ -1,0 +1,9 @@
+#!/bin/bash
+recieverFileName="log"
+portNumber=5560
+sleepTimer=10
+
+./lftpR.bin $recieverFileName $portNumber $sleepTimer
+
+
+

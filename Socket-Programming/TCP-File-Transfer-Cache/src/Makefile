@@ -7,8 +7,8 @@ ftpserver: server.c
 	gcc -std=gnu99 -Wall $< -o $@
 
 clean:
-	rm -f ftpclient ftpserver *.o *~ core
-	rm server client
+	rm -f client server *.o *~ core
+	rm -f server client
 
 
 

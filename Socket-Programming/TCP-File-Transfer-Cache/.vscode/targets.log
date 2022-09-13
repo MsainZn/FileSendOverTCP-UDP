@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Sep  5 15:47:32 2022
+# Make data base, printed on Tue Sep  6 10:44:27 2022
 
 # Variables
 
@@ -280,8 +282,6 @@ makefile:
 GNUmakefile:
 #  Implicit rule search has been done.
  
-make: *** No rule to make target 'all'.  Stop.
-
 #  File does not exist.
 #  File has been updated.
 #  Failed to be updated.
@@ -300,6 +300,6 @@ make: *** No rule to make target 'all'.  Stop.
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Mon Sep  5 15:47:32 2022
+# Finished Make data base on Tue Sep  6 10:44:27 2022
 
  

@@ -1,0 +1,7 @@
+#!/bin/bash
+senderFileName="log"
+serverIP="172.17.34.89"
+portNumber=5560
+
+./lftpS.bin $senderFileName $serverIP $portNumber
+

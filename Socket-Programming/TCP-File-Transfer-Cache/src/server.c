@@ -181,7 +181,7 @@ int main (int argc, char* argv[])
 			}
 
 			mssg->BUFFER_USED = readFLAG;
-			
+
 			// Cases:
 			if (readFLAG == 0) 
 			{
